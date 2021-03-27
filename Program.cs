@@ -10,9 +10,9 @@ namespace BaseLinker_Products_Multitool
 {
     class Program
     {
-        static string MainMenu()
+        static char MainMenu()
         {
-            string menuInput;
+            char menuInput;
             Console.WriteLine("================ "+ Resources.Language.MainMenu + " ================");
             Console.WriteLine("1. "+ Resources.Language.Menu1);
             Console.WriteLine("2. "+ Resources.Language.Menu2);
@@ -20,14 +20,14 @@ namespace BaseLinker_Products_Multitool
             Console.WriteLine("");
             Console.WriteLine("4. "+ Resources.Language.Exit);
 
-            menuInput = Console.ReadLine();
+            menuInput = Console.ReadKey(true).KeyChar;
             return menuInput;
         }
 
         static void MainActivity()
         {
             Console.Clear();
-            string menuInput;
+            char menuInput;
 
             while (true)
             {
@@ -35,19 +35,19 @@ namespace BaseLinker_Products_Multitool
                 Console.Clear();
                 switch (menuInput)
                 {
-                    case "1":
+                    case '1':
                         Workers.CheckIsDuplicatesExist();
                         Console.Clear();
                         break;
-                    case "2":
+                    case '2':
                         Workers.DeleteDuplicates();
                         Console.Clear();
                         break;
-                    case "3":
+                    case '3':
                         Workers.CopyProductsBetweenBaselinkerAccounts();
                         Console.Clear();
                         break;
-                    case "4":
+                    case '4':
                         Environment.Exit(0);
                         break;
                     default:
@@ -84,33 +84,30 @@ namespace BaseLinker_Products_Multitool
 
         static void Main(string[] args)
         {
-            string input;
-            bool languageMenu = true;
             Logo();
+            char input;
 
             Console.WriteLine("[EN] Select language | [PL] Wybierz język:");
             Console.WriteLine("1. PL");
             Console.WriteLine("2. EN");
 
-            while (languageMenu)
+            while (true)
             {
-                input = Console.ReadLine();
-                if (input == "1" || input == "2" || input == "PL" || input == "EN")
+                input = Console.ReadKey(true).KeyChar;
+
+                if (input == '1')
                 {
-                    if (input == "1" || input == "PL")
-                    {
-                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("pl-PL");
-                        languageMenu = false;
-                    }
-                    else
-                    {
-                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
-                        languageMenu = false;
-                    }
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("pl-PL");
+                    break;
+                }
+                else if (input == '2')
+                {
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+                    break;
                 }
                 else
                 {
-                    Console.WriteLine("[EN] Type 1 or 2 for select language | [PL] Wpisz 1 lub 2 aby wybrać język");
+                    Console.WriteLine("[EN] Press 1 or 2 for select language | [PL] Naciśnij 1 lub 2 aby wybrać język");
                 }
             }
 

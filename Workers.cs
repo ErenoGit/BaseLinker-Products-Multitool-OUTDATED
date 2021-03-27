@@ -23,50 +23,48 @@ namespace BaseLinker_Products_Multitool
 
         private static string GetCheckingKey()
         {
-            string checkingKey;
+            char checkingKey;
+
             Console.WriteLine("");
             Console.WriteLine(Resources.Language.HowToCheckDuplicates);
             Console.WriteLine("1. " + Resources.Language.HowToCheckDuplicates1 + " (sku)");
             Console.WriteLine("2. " + Resources.Language.HowToCheckDuplicates2 + " (ean)");
             Console.WriteLine("3. " + Resources.Language.HowToCheckDuplicates3 + " (name)");
-            checkingKey = Console.ReadLine();
-            switch (checkingKey)
+            
+            while (true)
             {
-                case "1":
-                    checkingKey = "sku";
-                    break;
-                case "2":
-                    checkingKey = "ean";
-                    break;
-                case "3":
-                    checkingKey = "name";
-                    break;
-                default:
-                    checkingKey = "ERROR";
-                    break;
-            }
+                checkingKey = Console.ReadKey(true).KeyChar;
 
-            return checkingKey;
+                if(checkingKey == '1')
+                    return "sku";
+                else if (checkingKey == '2')
+                    return "ean";
+                else if (checkingKey == '3')
+                    return "name";
+                else
+                    Console.WriteLine(Resources.Language.WrongMenuInput);
+            }
         }
 
         private static bool CheckIsEverythingCorrect()
         {
+            char isEverythingCorrect;
+
             Console.WriteLine("");
             Console.WriteLine(Resources.Language.IsEverythingCorrect);
             Console.WriteLine("1. " + Resources.Language.Yes);
             Console.WriteLine("2. " + Resources.Language.No);
-            string IsEverythingCorrect = Console.ReadLine();
-
-            switch (IsEverythingCorrect)
+            
+            while (true)
             {
-                case "1":
+                isEverythingCorrect = Console.ReadKey(true).KeyChar;
+
+                if (isEverythingCorrect == '1')
                     return true;
-                case "2":
+                else if (isEverythingCorrect == '2')
                     return false;
-                default:
+                else
                     Console.WriteLine(Resources.Language.WrongMenuInput);
-                    Console.ReadKey();
-                    return false;
             }
         }
 
@@ -77,13 +75,6 @@ namespace BaseLinker_Products_Multitool
             string tokenAPI = GetTokenAPI();
             string category = GetCategory();
             string checkingKey = GetCheckingKey();
-
-            if (checkingKey == "ERROR")
-            {
-                Console.WriteLine(Resources.Language.WrongMenuInput);
-                Console.ReadKey();
-                return;
-            }
 
             Console.WriteLine("");
             Console.WriteLine(Resources.Language.YourOptions+":");

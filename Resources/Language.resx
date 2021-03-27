@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EnterAPIToken" xml:space="preserve">
-    <value>Wpisz token API konta BaseLinker (Moje konto &gt; API &gt; Twój token API)</value>
+    <value>Wpisz token API konta BaseLinker (Moje konto &gt; API &gt; Twój token API) i zatwierdź wciskając ENTER</value>
   </data>
   <data name="EnterCategory" xml:space="preserve">
-    <value>Wpisz ID kategorii produktów (Magazyn BaseLinker &gt; Kategorie &gt; [Twoja kategoria] &gt; [W adresie strony pojawi się na końcu id kategorii])</value>
+    <value>Wpisz ID kategorii produktów (Magazyn BaseLinker &gt; Kategorie &gt; [Twoja kategoria] &gt; [W adresie strony pojawi się na końcu id kategorii]) i zatwierdź wciskając ENTER</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Wyjście</value>
@@ -157,7 +157,7 @@
     <value>Nie. Wróć do menu głównego!</value>
   </data>
   <data name="WrongMenuInput" xml:space="preserve">
-    <value>Podałeś niepoprawną wartość, wybierz pozycję z menu wpisując jej numer.  Wciśnij dowolny klawisz aby wrócić do menu głównego!</value>
+    <value>Podałeś niepoprawną wartość, wybierz pozycję z menu wpisując jej numer.</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Tak, zaczynaj!</value>

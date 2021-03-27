@@ -61,7 +61,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wpisz token API konta BaseLinker (Moje konto &gt; API &gt; Twój token API).
+        ///   Looks up a localized string similar to Wpisz token API konta BaseLinker (Moje konto &gt; API &gt; Twój token API) i zatwierdź wciskając ENTER.
         /// </summary>
         internal static string EnterAPIToken {
             get {
@@ -70,7 +70,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wpisz ID kategorii produktów (Magazyn BaseLinker &gt; Kategorie &gt; [Twoja kategoria] &gt; [W adresie strony pojawi się na końcu id kategorii]).
+        ///   Looks up a localized string similar to Wpisz ID kategorii produktów (Magazyn BaseLinker &gt; Kategorie &gt; [Twoja kategoria] &gt; [W adresie strony pojawi się na końcu id kategorii]) i zatwierdź wciskając ENTER.
         /// </summary>
         internal static string EnterCategory {
             get {
@@ -178,7 +178,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Podałeś niepoprawną wartość, wybierz pozycję z menu wpisując jej numer.  Wciśnij dowolny klawisz aby wrócić do menu głównego!.
+        ///   Looks up a localized string similar to Podałeś niepoprawną wartość, wybierz pozycję z menu wpisując jej numer..
         /// </summary>
         internal static string WrongMenuInput {
             get {
