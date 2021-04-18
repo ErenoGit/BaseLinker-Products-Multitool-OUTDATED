@@ -5,11 +5,18 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Globalization;
+using BaseLinker_Products_Multitool.Workers;
+using System.Net.Http;
+
+
+//TO DO: Service of errors (in example when sb try to type string when should type int)
+
 
 namespace BaseLinker_Products_Multitool
 {
-    class Program
+    class LogoAndMainMenu
     {
+        public static readonly HttpClient client = new HttpClient();
         static char MainMenu()
         {
             char menuInput;
@@ -17,8 +24,10 @@ namespace BaseLinker_Products_Multitool
             Console.WriteLine("1. "+ Resources.Language.Menu1);
             Console.WriteLine("2. "+ Resources.Language.Menu2);
             Console.WriteLine("3. "+ Resources.Language.Menu3);
-            Console.WriteLine("");
-            Console.WriteLine("4. "+ Resources.Language.Exit);
+            Console.WriteLine("4. " + Resources.Language.Menu4);
+            Console.WriteLine("5. " + Resources.Language.Menu5);
+            Console.WriteLine();
+            Console.WriteLine("6. "+ Resources.Language.Exit);
 
             menuInput = Console.ReadKey(true).KeyChar;
             return menuInput;
@@ -36,18 +45,26 @@ namespace BaseLinker_Products_Multitool
                 switch (menuInput)
                 {
                     case '1':
-                        Workers.CheckIsDuplicatesExist();
+                        CheckDuplicates.CheckIsDuplicatesExist_Worker();
                         Console.Clear();
                         break;
                     case '2':
-                        Workers.DeleteDuplicates();
+                        DeleteDuplicates.DeleteDuplicates_Worker();
                         Console.Clear();
                         break;
                     case '3':
-                        Workers.CopyProductsBetweenBaselinkerAccounts();
+                        CopyProductsBL.CopyProductsBetweenBaselinkerAccounts_Worker();
                         Console.Clear();
                         break;
                     case '4':
+                        GenerateProducts.MassiveGenerateProducts_WorkerAsync();
+                        Console.Clear();
+                        break;
+                    case '5':
+                        DeleteProducts.DeleteProducts_Worker();
+                        Console.Clear();
+                        break;
+                    case '6':
                         Environment.Exit(0);
                         break;
                     default:
@@ -84,34 +101,45 @@ namespace BaseLinker_Products_Multitool
 
         static void Main(string[] args)
         {
-            Logo();
-            char input;
+            Console.SetWindowSize(120, 30);
 
-            Console.WriteLine("[EN] Select language | [PL] Wybierz język:");
-            Console.WriteLine("1. PL");
-            Console.WriteLine("2. EN");
-
-            while (true)
+            try
             {
-                input = Console.ReadKey(true).KeyChar;
+                Logo();
+                char input;
 
-                if (input == '1')
+                Console.WriteLine("[EN] Select language | [PL] Wybierz język:");
+                Console.WriteLine("1. PL");
+                Console.WriteLine("2. EN");
+
+                while (true)
                 {
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("pl-PL");
-                    break;
+                    input = Console.ReadKey(true).KeyChar;
+
+                    if (input == '1')
+                    {
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("pl-PL");
+                        break;
+                    }
+                    else if (input == '2')
+                    {
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("[EN] Press 1 or 2 for select language | [PL] Naciśnij 1 lub 2 aby wybrać język");
+                    }
                 }
-                else if (input == '2')
-                {
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("[EN] Press 1 or 2 for select language | [PL] Naciśnij 1 lub 2 aby wybrać język");
-                }
+
+                MainActivity();
             }
-
-            MainActivity();
+            catch(Exception ex)
+            {
+                Console.WriteLine("ERROR: "+ex.Message);
+                Console.WriteLine("Click any button to close application...");
+                Console.ReadKey();
+            }
         }
     }
 }

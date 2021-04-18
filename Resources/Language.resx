@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddedProductsInfo" xml:space="preserve">
+    <value>Pomyślnie dodano {a} z {b} produktów</value>
+  </data>
   <data name="EnterAPIToken" xml:space="preserve">
     <value>Wpisz token API konta BaseLinker (Moje konto &gt; API &gt; Twój token API) i zatwierdź wciskając ENTER</value>
   </data>
   <data name="EnterCategory" xml:space="preserve">
     <value>Wpisz ID kategorii produktów (Magazyn BaseLinker &gt; Kategorie &gt; [Twoja kategoria] &gt; [W adresie strony pojawi się na końcu id kategorii]) i zatwierdź wciskając ENTER</value>
+  </data>
+  <data name="EnterQuantityOfNewProducts" xml:space="preserve">
+    <value>Wpisz ilość nowych produktów i zatwierdź wciskając ENTER</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Wyjście</value>
@@ -145,16 +151,25 @@
     <value>GŁÓWNE MENU</value>
   </data>
   <data name="Menu1" xml:space="preserve">
-    <value>Sprawdzanie czy w magazynie produktów BaseLinkera występują duplikaty produktów</value>
+    <value>Sprawdzanie duplikatów produktów w wybranej kategorii produktów w BaseLinker</value>
   </data>
   <data name="Menu2" xml:space="preserve">
-    <value>Usuwanie duplikatów w magazynie produktów BaseLinkera</value>
+    <value>Usuwanie duplikatów produktów w wybranej kategorii produktów w BaseLinker</value>
   </data>
   <data name="Menu3" xml:space="preserve">
-    <value>Przenoszenie magazynu produktów z jednego konta BaseLinker do drugiego</value>
+    <value>Przenoszenie całego magazynu produktów z jednego konta BaseLinker do drugiego</value>
+  </data>
+  <data name="Menu4" xml:space="preserve">
+    <value>Masowe generowanie nowych produktów w wybranej kategorii produktów w BaseLinker (dla testów)</value>
+  </data>
+  <data name="Menu5" xml:space="preserve">
+    <value>Usuwanie wszystkich produktów z wybranej kategorii produktów BaseLinker</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Nie. Wróć do menu głównego!</value>
+  </data>
+  <data name="PressAnythingToBackToMenu" xml:space="preserve">
+    <value>Wciśnij dowolny klawisz aby wrócić do menu głównego...</value>
   </data>
   <data name="WrongMenuInput" xml:space="preserve">
     <value>Podałeś niepoprawną wartość, wybierz pozycję z menu wpisując jej numer.</value>

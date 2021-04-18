@@ -61,6 +61,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pomyślnie dodano {a} z {b} produktów.
+        /// </summary>
+        internal static string AddedProductsInfo {
+            get {
+                return ResourceManager.GetString("AddedProductsInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wpisz token API konta BaseLinker (Moje konto &gt; API &gt; Twój token API) i zatwierdź wciskając ENTER.
         /// </summary>
         internal static string EnterAPIToken {
@@ -75,6 +84,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         internal static string EnterCategory {
             get {
                 return ResourceManager.GetString("EnterCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wpisz ilość nowych produktów i zatwierdź wciskając ENTER.
+        /// </summary>
+        internal static string EnterQuantityOfNewProducts {
+            get {
+                return ResourceManager.GetString("EnterQuantityOfNewProducts", resourceCulture);
             }
         }
         
@@ -142,7 +160,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sprawdzanie czy w magazynie produktów BaseLinkera występują duplikaty produktów.
+        ///   Looks up a localized string similar to Sprawdzanie duplikatów produktów w wybranej kategorii produktów w BaseLinker.
         /// </summary>
         internal static string Menu1 {
             get {
@@ -151,7 +169,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Usuwanie duplikatów w magazynie produktów BaseLinkera.
+        ///   Looks up a localized string similar to Usuwanie duplikatów produktów w wybranej kategorii produktów w BaseLinker.
         /// </summary>
         internal static string Menu2 {
             get {
@@ -160,11 +178,29 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Przenoszenie magazynu produktów z jednego konta BaseLinker do drugiego.
+        ///   Looks up a localized string similar to Przenoszenie całego magazynu produktów z jednego konta BaseLinker do drugiego.
         /// </summary>
         internal static string Menu3 {
             get {
                 return ResourceManager.GetString("Menu3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Masowe generowanie nowych produktów w wybranej kategorii produktów w BaseLinker (dla testów).
+        /// </summary>
+        internal static string Menu4 {
+            get {
+                return ResourceManager.GetString("Menu4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuwanie wszystkich produktów z wybranej kategorii produktów BaseLinker.
+        /// </summary>
+        internal static string Menu5 {
+            get {
+                return ResourceManager.GetString("Menu5", resourceCulture);
             }
         }
         
@@ -174,6 +210,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         internal static string No {
             get {
                 return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wciśnij dowolny klawisz aby wrócić do menu głównego....
+        /// </summary>
+        internal static string PressAnythingToBackToMenu {
+            get {
+                return ResourceManager.GetString("PressAnythingToBackToMenu", resourceCulture);
             }
         }
         

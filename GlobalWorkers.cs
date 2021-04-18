@@ -1,31 +1,35 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BaseLinker_Products_Multitool
 {
-    class Workers
+    class GlobalWorkers
     {
-        private static string GetTokenAPI()
+        public const string BLApi = "https://api.baselinker.com/connector.php";
+        public static string GetTokenAPI()
         {
             Console.WriteLine(Resources.Language.EnterAPIToken);
             return Console.ReadLine();
         }
 
-        private static string GetCategory()
+        public static string GetCategory()
         {
-            Console.WriteLine("");
+            Console.WriteLine();
             Console.WriteLine(Resources.Language.EnterCategory);
             return Console.ReadLine();
         }
 
-        private static string GetCheckingKey()
+        public static string GetCheckingKey()
         {
             char checkingKey;
 
-            Console.WriteLine("");
+            Console.WriteLine();
             Console.WriteLine(Resources.Language.HowToCheckDuplicates);
             Console.WriteLine("1. " + Resources.Language.HowToCheckDuplicates1 + " (sku)");
             Console.WriteLine("2. " + Resources.Language.HowToCheckDuplicates2 + " (ean)");
@@ -46,11 +50,11 @@ namespace BaseLinker_Products_Multitool
             }
         }
 
-        private static bool CheckIsEverythingCorrect()
+        public static bool CheckIsEverythingCorrect()
         {
             char isEverythingCorrect;
 
-            Console.WriteLine("");
+            Console.WriteLine();
             Console.WriteLine(Resources.Language.IsEverythingCorrect);
             Console.WriteLine("1. " + Resources.Language.Yes);
             Console.WriteLine("2. " + Resources.Language.No);
@@ -68,38 +72,34 @@ namespace BaseLinker_Products_Multitool
             }
         }
 
-
-
-        public static void CheckIsDuplicatesExist()
+        public static string CallBaseLinker_SuccessOrError(string tokenAPI, string method, string parameters)
         {
-            string tokenAPI = GetTokenAPI();
-            string category = GetCategory();
-            string checkingKey = GetCheckingKey();
+            var values = new Dictionary<string, string>
+                {
+                    { "token", tokenAPI },
+                    { "method", method },
+                    { "parameters", parameters }
+                };
 
-            Console.WriteLine("");
-            Console.WriteLine(Resources.Language.YourOptions+":");
-            Console.WriteLine(Resources.Language.YourOptionsAPI+": "+ tokenAPI);
-            Console.WriteLine(Resources.Language.YourOptionsCategory+": "+ category);
-            Console.WriteLine(Resources.Language.YourOptionsCheckKey+": "+ checkingKey);
+            var content = new FormUrlEncodedContent(values);
+            var response = LogoAndMainMenu.client.PostAsync("https://api.baselinker.com/connector.php", content).Result;
 
-            bool IsEverythingCorrect = CheckIsEverythingCorrect();
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                string responseString = responseContent.ReadAsStringAsync().Result;
+                Thread.Sleep(1000);
+                dynamic responseObject = JObject.Parse(responseString);
+                string responseStatus = responseObject.status;
+                return responseStatus;
+            }
+            else
+            {
+                return "ERROR";
+            }
 
-            if (!IsEverythingCorrect)
-                return;
 
-            
-
-            //TO DO: CHECKING DUPLICATES HERE
         }
 
-        public static void DeleteDuplicates()
-        {
-
-        }
-
-        public static void CopyProductsBetweenBaselinkerAccounts()
-        {
-
-        }
     }
 }
