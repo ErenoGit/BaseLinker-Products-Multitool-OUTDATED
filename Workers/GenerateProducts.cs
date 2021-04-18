@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace BaseLinker_Products_Multitool.Workers
 {
-    class NewProduct
+    class AddProductParameters
     {
         public string storage_id { get; set; }
         public string product_id { get; set; }
@@ -60,7 +60,7 @@ namespace BaseLinker_Products_Multitool.Workers
             {
                 Console.WriteLine(i + "/" + quantityOfNewProducts+" ...");
 
-                NewProduct newProduct = new NewProduct()
+                AddProductParameters addProductParameters = new AddProductParameters()
                 {
                     storage_id = "bl_1",
                     product_id = "",
@@ -73,11 +73,12 @@ namespace BaseLinker_Products_Multitool.Workers
                     man_name = ""
                 };
 
-                string parameters = JsonConvert.SerializeObject(newProduct);
+                string parameters = JsonConvert.SerializeObject(addProductParameters);
 
-                string response = CallBaseLinker_SuccessOrError(tokenAPI, "addProduct", parameters);
+                JObject response = CallBaseLinker(tokenAPI, "addProduct", parameters);
+                JValue responseStatus = (JValue)response["status"];
 
-                if(response == "SUCCESS")
+                if (responseStatus.Value.ToString() == "SUCCESS")
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
                     Console.WriteLine(i + "/" + quantityOfNewProducts + " OK!");
@@ -93,10 +94,7 @@ namespace BaseLinker_Products_Multitool.Workers
             }
 
             Console.WriteLine();
-            string exitInfo = Resources.Language.AddedProductsInfo;
-            exitInfo = exitInfo.Replace("{a}", quantityOfSuccessResponses.ToString());
-            exitInfo = exitInfo.Replace("{b}", quantityOfNewProducts.ToString());
-            Console.WriteLine(exitInfo);
+            Console.WriteLine(Resources.Language.AddedProductsInfo.Replace("{a}", quantityOfSuccessResponses.ToString()).Replace("{b}", quantityOfNewProducts.ToString()));
 
             Console.WriteLine(Resources.Language.PressAnythingToBackToMenu);
 

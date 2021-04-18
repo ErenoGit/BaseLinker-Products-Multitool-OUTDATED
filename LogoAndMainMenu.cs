@@ -23,8 +23,8 @@ namespace BaseLinker_Products_Multitool
             Console.WriteLine("================ "+ Resources.Language.MainMenu + " ================");
             Console.WriteLine("1. "+ Resources.Language.Menu1);
             Console.WriteLine("2. "+ Resources.Language.Menu2);
-            Console.WriteLine("3. "+ Resources.Language.Menu3);
-            Console.WriteLine("4. " + Resources.Language.Menu4);
+            Console.WriteLine("3. " + Resources.Language.Menu3);
+            Console.WriteLine("4. "+ Resources.Language.Menu4);
             Console.WriteLine("5. " + Resources.Language.Menu5);
             Console.WriteLine();
             Console.WriteLine("6. "+ Resources.Language.Exit);
@@ -53,15 +53,15 @@ namespace BaseLinker_Products_Multitool
                         Console.Clear();
                         break;
                     case '3':
-                        CopyProductsBL.CopyProductsBetweenBaselinkerAccounts_Worker();
+                        CopyCategoryBL.CopyCategoryBaselinkerAccounts_Worker();
                         Console.Clear();
                         break;
                     case '4':
-                        GenerateProducts.MassiveGenerateProducts_WorkerAsync();
+                        CopyWarehouseBL.CopyEntireWarehouseBaselinkerAccounts_Worker();
                         Console.Clear();
                         break;
                     case '5':
-                        DeleteProducts.DeleteProducts_Worker();
+                        GenerateProducts.MassiveGenerateProducts_WorkerAsync();
                         Console.Clear();
                         break;
                     case '6':

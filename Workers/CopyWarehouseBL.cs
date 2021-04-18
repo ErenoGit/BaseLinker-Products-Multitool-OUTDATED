@@ -7,12 +7,11 @@ using static BaseLinker_Products_Multitool.GlobalWorkers;
 
 namespace BaseLinker_Products_Multitool
 {
-    class DeleteDuplicates
+    class CopyWarehouseBL
     {
-        public static void DeleteDuplicates_Worker()
+        public static void CopyEntireWarehouseBaselinkerAccounts_Worker()
         {
-            //TO DO: delete duplicates based on what already is in CheckDuplicates
+            //TO DO: copy all categories and products from first BL account to second BL account
         }
-
     }
 }

@@ -70,6 +70,33 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spośród {a} produktów odnaleziono łącznie {b} {c}, których jest więcej niż jeden!.
+        /// </summary>
+        internal static string CheckDuplicatesEndInfo {
+            get {
+                return ResourceManager.GetString("CheckDuplicatesEndInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pobrano {a} produktów....
+        /// </summary>
+        internal static string DownloadedXProducts {
+            get {
+                return ResourceManager.GetString("DownloadedXProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pusta listów produktów!.
+        /// </summary>
+        internal static string EmptyListOfProducts {
+            get {
+                return ResourceManager.GetString("EmptyListOfProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wpisz token API konta BaseLinker (Moje konto &gt; API &gt; Twój token API) i zatwierdź wciskając ENTER.
         /// </summary>
         internal static string EnterAPIToken {
@@ -97,11 +124,29 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wystąpił błąd podczas pobierania listy produktów!.
+        /// </summary>
+        internal static string ErrorWhenDownloadProducts {
+            get {
+                return ResourceManager.GetString("ErrorWhenDownloadProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wyjście.
         /// </summary>
         internal static string Exit {
             get {
                 return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Znaleziono zduplikowane {a}:.
+        /// </summary>
+        internal static string FoundDuplicate {
+            get {
+                return ResourceManager.GetString("FoundDuplicate", resourceCulture);
             }
         }
         
@@ -142,6 +187,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no duplicates!.
+        /// </summary>
+        internal static string InfoNoDuplicates {
+            get {
+                return ResourceManager.GetString("InfoNoDuplicates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Czy powyższe ustawienia są poprawne?.
         /// </summary>
         internal static string IsEverythingCorrect {
@@ -160,7 +214,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sprawdzanie duplikatów produktów w wybranej kategorii produktów w BaseLinker.
+        ///   Looks up a localized string similar to Sprawdzanie duplikatów produktów w wybranej kategorii produktów w BaseLinker (tylko sprawdzanie, bez usuwania).
         /// </summary>
         internal static string Menu1 {
             get {
@@ -178,7 +232,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Przenoszenie całego magazynu produktów z jednego konta BaseLinker do drugiego.
+        ///   Looks up a localized string similar to Kopiowanie kategorii produktów (z produktami) z jednego konta BaseLinker do drugiego.
         /// </summary>
         internal static string Menu3 {
             get {
@@ -187,7 +241,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Masowe generowanie nowych produktów w wybranej kategorii produktów w BaseLinker (dla testów).
+        ///   Looks up a localized string similar to Kopiowanie całego magazynu produktów (z produktami, kategoriami itd.) z jednego konta BaseLinker do drugiego.
         /// </summary>
         internal static string Menu4 {
             get {
@@ -196,7 +250,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Usuwanie wszystkich produktów z wybranej kategorii produktów BaseLinker.
+        ///   Looks up a localized string similar to Masowe generowanie nowych produktów w wybranej kategorii produktów w BaseLinker (dla testów).
         /// </summary>
         internal static string Menu5 {
             get {
@@ -219,6 +273,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         internal static string PressAnythingToBackToMenu {
             get {
                 return ResourceManager.GetString("PressAnythingToBackToMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rozpoczęto pobieranie listy produktów..
+        /// </summary>
+        internal static string StartedGetProductsList {
+            get {
+                return ResourceManager.GetString("StartedGetProductsList", resourceCulture);
             }
         }
         

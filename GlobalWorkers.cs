@@ -72,7 +72,7 @@ namespace BaseLinker_Products_Multitool
             }
         }
 
-        public static string CallBaseLinker_SuccessOrError(string tokenAPI, string method, string parameters)
+        public static JObject CallBaseLinker(string tokenAPI, string method, string parameters)
         {
             var values = new Dictionary<string, string>
                 {
@@ -89,13 +89,12 @@ namespace BaseLinker_Products_Multitool
                 var responseContent = response.Content;
                 string responseString = responseContent.ReadAsStringAsync().Result;
                 Thread.Sleep(1000);
-                dynamic responseObject = JObject.Parse(responseString);
-                string responseStatus = responseObject.status;
-                return responseStatus;
+                JObject responseObject = JObject.Parse(responseString);
+                return responseObject;
             }
             else
             {
-                return "ERROR";
+                return new JObject(new JProperty("status", "ERROR"));
             }
 
 
