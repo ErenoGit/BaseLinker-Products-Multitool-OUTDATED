@@ -13,19 +13,6 @@ using System.Threading;
 
 namespace BaseLinker_Products_Multitool.Workers
 {
-    class AddProductParameters
-    {
-        public string storage_id { get; set; }
-        public string product_id { get; set; }
-        public string sku { get; set; }
-        public string name { get; set; }
-        public int quantity { get; set; }
-        public float price_brutto { get; set; }
-        public int tax_rate { get; set; }
-        public int category_id { get; set; }
-        public string man_name { get; set; }
-    }
-
     class GenerateProducts
     {
         private static ulong GetQuantityOfNewProducts()
@@ -87,7 +74,7 @@ namespace BaseLinker_Products_Multitool.Workers
                 else
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(i + "/" + quantityOfNewProducts + " ERROR!");
+                    Console.WriteLine(i + "/" + quantityOfNewProducts + " " + Resources.Language.Error);
                 }
 
 
@@ -97,7 +84,6 @@ namespace BaseLinker_Products_Multitool.Workers
             Console.WriteLine(Resources.Language.AddedProductsInfo.Replace("{a}", quantityOfSuccessResponses.ToString()).Replace("{b}", quantityOfNewProducts.ToString()));
 
             Console.WriteLine(Resources.Language.PressAnythingToBackToMenu);
-
             Console.ReadKey();
         }
     }

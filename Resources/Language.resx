@@ -118,10 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddedProductsInfo" xml:space="preserve">
-    <value>Pomyślnie dodano {a} z {b} produktów</value>
+    <value>Pomyślnie dodano {a} z {b} produktów!</value>
   </data>
   <data name="CheckDuplicatesEndInfo" xml:space="preserve">
     <value>Spośród {a} produktów odnaleziono łącznie {b} {c}, których jest więcej niż jeden!</value>
+  </data>
+  <data name="DeletedProductsInfo" xml:space="preserve">
+    <value>Pomyślnie usunięto {a} z {b} produktów!</value>
   </data>
   <data name="DownloadedXProducts" xml:space="preserve">
     <value>Pobrano {a} produktów...</value>
@@ -137,6 +140,9 @@
   </data>
   <data name="EnterQuantityOfNewProducts" xml:space="preserve">
     <value>Wpisz ilość nowych produktów i zatwierdź wciskając ENTER</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Błąd!</value>
   </data>
   <data name="ErrorWhenDownloadProducts" xml:space="preserve">
     <value>Wystąpił błąd podczas pobierania listy produktów!</value>
@@ -158,6 +164,15 @@
   </data>
   <data name="HowToCheckDuplicates3" xml:space="preserve">
     <value>Nazwa</value>
+  </data>
+  <data name="HowToDeleteDuplicates" xml:space="preserve">
+    <value>Jak usuwać zdublowane produkty?</value>
+  </data>
+  <data name="HowToDeleteDuplicates1" xml:space="preserve">
+    <value>Spośród zduplikowanych produktów pozostaw jeden z najwyższym ID (najnowszy dodany do kategorii produktów)</value>
+  </data>
+  <data name="HowToDeleteDuplicates2" xml:space="preserve">
+    <value>Spośród zduplikowanych produktów pozostaw jeden z najniższym ID (najstarszy dodany do kategorii produktów)</value>
   </data>
   <data name="InfoNoDuplicates" xml:space="preserve">
     <value>There are no duplicates!</value>
@@ -186,8 +201,14 @@
   <data name="No" xml:space="preserve">
     <value>Nie. Wróć do menu głównego!</value>
   </data>
+  <data name="NumberOfProductsToDeleteQuestion" xml:space="preserve">
+    <value>Ilość produktów do usunięcia</value>
+  </data>
   <data name="PressAnythingToBackToMenu" xml:space="preserve">
     <value>Wciśnij dowolny klawisz aby wrócić do menu głównego...</value>
+  </data>
+  <data name="StartedDeleteProduct" xml:space="preserve">
+    <value>Started removing duplicated products ...</value>
   </data>
   <data name="StartedGetProductsList" xml:space="preserve">
     <value>Rozpoczęto pobieranie listy produktów.</value>

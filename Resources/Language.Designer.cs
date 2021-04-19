@@ -61,7 +61,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pomyślnie dodano {a} z {b} produktów.
+        ///   Looks up a localized string similar to Pomyślnie dodano {a} z {b} produktów!.
         /// </summary>
         internal static string AddedProductsInfo {
             get {
@@ -75,6 +75,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         internal static string CheckDuplicatesEndInfo {
             get {
                 return ResourceManager.GetString("CheckDuplicatesEndInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pomyślnie usunięto {a} z {b} produktów!.
+        /// </summary>
+        internal static string DeletedProductsInfo {
+            get {
+                return ResourceManager.GetString("DeletedProductsInfo", resourceCulture);
             }
         }
         
@@ -120,6 +129,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         internal static string EnterQuantityOfNewProducts {
             get {
                 return ResourceManager.GetString("EnterQuantityOfNewProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Błąd!.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         
@@ -183,6 +201,33 @@ namespace BaseLinker_Products_Multitool.Resources {
         internal static string HowToCheckDuplicates3 {
             get {
                 return ResourceManager.GetString("HowToCheckDuplicates3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jak usuwać zdublowane produkty?.
+        /// </summary>
+        internal static string HowToDeleteDuplicates {
+            get {
+                return ResourceManager.GetString("HowToDeleteDuplicates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spośród zduplikowanych produktów pozostaw jeden z najwyższym ID (najnowszy dodany do kategorii produktów).
+        /// </summary>
+        internal static string HowToDeleteDuplicates1 {
+            get {
+                return ResourceManager.GetString("HowToDeleteDuplicates1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spośród zduplikowanych produktów pozostaw jeden z najniższym ID (najstarszy dodany do kategorii produktów).
+        /// </summary>
+        internal static string HowToDeleteDuplicates2 {
+            get {
+                return ResourceManager.GetString("HowToDeleteDuplicates2", resourceCulture);
             }
         }
         
@@ -268,11 +313,29 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ilość produktów do usunięcia.
+        /// </summary>
+        internal static string NumberOfProductsToDeleteQuestion {
+            get {
+                return ResourceManager.GetString("NumberOfProductsToDeleteQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wciśnij dowolny klawisz aby wrócić do menu głównego....
         /// </summary>
         internal static string PressAnythingToBackToMenu {
             get {
                 return ResourceManager.GetString("PressAnythingToBackToMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started removing duplicated products ....
+        /// </summary>
+        internal static string StartedDeleteProduct {
+            get {
+                return ResourceManager.GetString("StartedDeleteProduct", resourceCulture);
             }
         }
         

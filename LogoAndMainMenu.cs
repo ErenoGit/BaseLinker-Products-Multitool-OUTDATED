@@ -49,7 +49,7 @@ namespace BaseLinker_Products_Multitool
                         Console.Clear();
                         break;
                     case '2':
-                        DeleteDuplicates.DeleteDuplicates_Worker();
+                        CheckAndDeleteDuplicates.CheckAndDeleteDuplicates_Worker();
                         Console.Clear();
                         break;
                     case '3':
