@@ -190,7 +190,7 @@
     <value>Removing duplicates in selected product category in BaseLinker</value>
   </data>
   <data name="Menu3" xml:space="preserve">
-    <value>Copy product category (with products) from one BaseLinker account to another</value>
+    <value>Copying products from one category from one BaseLinker account to another</value>
   </data>
   <data name="Menu4" xml:space="preserve">
     <value>Copy entire product inventory (with products, categories etc.) from one BaseLinker account to another</value>

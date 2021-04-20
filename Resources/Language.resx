@@ -190,7 +190,7 @@
     <value>Usuwanie duplikatów produktów w wybranej kategorii produktów w BaseLinker</value>
   </data>
   <data name="Menu3" xml:space="preserve">
-    <value>Kopiowanie kategorii produktów (z produktami) z jednego konta BaseLinker do drugiego</value>
+    <value>Kopiowanie produktów z jednej kategorii z jednego konta BaseLinker do drugiego</value>
   </data>
   <data name="Menu4" xml:space="preserve">
     <value>Kopiowanie całego magazynu produktów (z produktami, kategoriami itd.) z jednego konta BaseLinker do drugiego</value>

@@ -277,7 +277,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kopiowanie kategorii produktów (z produktami) z jednego konta BaseLinker do drugiego.
+        ///   Looks up a localized string similar to Kopiowanie produktów z jednej kategorii z jednego konta BaseLinker do drugiego.
         /// </summary>
         internal static string Menu3 {
             get {

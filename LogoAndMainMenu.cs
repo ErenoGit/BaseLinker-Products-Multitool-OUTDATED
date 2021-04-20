@@ -53,11 +53,11 @@ namespace BaseLinker_Products_Multitool
                         Console.Clear();
                         break;
                     case '3':
-                        CopyCategoryBL.CopyCategoryBaselinkerAccounts_Worker();
+                        CopyProductsCategoryBL.CopyCategoryProductsBetweenBaselinkerAccounts_Worker();
                         Console.Clear();
                         break;
                     case '4':
-                        CopyWarehouseBL.CopyEntireWarehouseBaselinkerAccounts_Worker();
+                        CopyWarehouseBL.CopyEntireWarehouseBetweenBaselinkerAccounts_Worker();
                         Console.Clear();
                         break;
                     case '5':

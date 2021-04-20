@@ -11,7 +11,7 @@ namespace BaseLinker_Products_Multitool
 {
     class CopyWarehouseBL
     {
-        public static void CopyEntireWarehouseBaselinkerAccounts_Worker()
+        public static void CopyEntireWarehouseBetweenBaselinkerAccounts_Worker()
         {
             //TO DO: copy all categories and products from first BL account to second BL account
         }

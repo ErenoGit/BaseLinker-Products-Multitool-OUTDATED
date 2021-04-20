@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Workers\CheckDuplicates.cs" />
-    <Compile Include="Workers\CopyCategoryBL.cs" />
+    <Compile Include="Workers\CopyProductsCategoryBL.cs" />
     <Compile Include="Workers\CopyWarehouseBL.cs" />
     <Compile Include="Workers\CheckAndDeleteDuplicates.cs" />
     <Compile Include="LogoAndMainMenu.cs" />
