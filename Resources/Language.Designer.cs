@@ -286,7 +286,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kopiowanie całego magazynu produktów (z produktami, kategoriami itd.) z jednego konta BaseLinker do drugiego.
+        ///   Looks up a localized string similar to Kopiowanie całego magazynu produktów (z kategoriami, kategoriami itd.) z jednego konta BaseLinker do drugiego.
         /// </summary>
         internal static string Menu4 {
             get {
@@ -309,6 +309,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         internal static string No {
             get {
                 return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now enter the details of the second BaseLinker account....
+        /// </summary>
+        internal static string NowEnterSecondBL {
+            get {
+                return ResourceManager.GetString("NowEnterSecondBL", resourceCulture);
             }
         }
         
@@ -385,11 +394,29 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Token API docelowego konta.
+        /// </summary>
+        internal static string YourOptionsAPI2 {
+            get {
+                return ResourceManager.GetString("YourOptionsAPI2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kategoria produktów.
         /// </summary>
         internal static string YourOptionsCategory {
             get {
                 return ResourceManager.GetString("YourOptionsCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Docelowa kategoria produktów.
+        /// </summary>
+        internal static string YourOptionsCategory2 {
+            get {
+                return ResourceManager.GetString("YourOptionsCategory2", resourceCulture);
             }
         }
         

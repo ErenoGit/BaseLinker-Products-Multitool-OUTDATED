@@ -193,13 +193,16 @@
     <value>Kopiowanie produktów z jednej kategorii z jednego konta BaseLinker do drugiego</value>
   </data>
   <data name="Menu4" xml:space="preserve">
-    <value>Kopiowanie całego magazynu produktów (z produktami, kategoriami itd.) z jednego konta BaseLinker do drugiego</value>
+    <value>Kopiowanie całego magazynu produktów (z kategoriami, kategoriami itd.) z jednego konta BaseLinker do drugiego</value>
   </data>
   <data name="Menu5" xml:space="preserve">
     <value>Masowe generowanie nowych produktów w wybranej kategorii produktów w BaseLinker (dla testów)</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Nie. Wróć do menu głównego!</value>
+  </data>
+  <data name="NowEnterSecondBL" xml:space="preserve">
+    <value>Now enter the details of the second BaseLinker account...</value>
   </data>
   <data name="NumberOfProductsToDeleteQuestion" xml:space="preserve">
     <value>Ilość produktów do usunięcia</value>
@@ -225,8 +228,14 @@
   <data name="YourOptionsAPI" xml:space="preserve">
     <value>Token API</value>
   </data>
+  <data name="YourOptionsAPI2" xml:space="preserve">
+    <value>Token API docelowego konta</value>
+  </data>
   <data name="YourOptionsCategory" xml:space="preserve">
     <value>Kategoria produktów</value>
+  </data>
+  <data name="YourOptionsCategory2" xml:space="preserve">
+    <value>Docelowa kategoria produktów</value>
   </data>
   <data name="YourOptionsCheckKey" xml:space="preserve">
     <value>Klucz sprawdzania produktów</value>

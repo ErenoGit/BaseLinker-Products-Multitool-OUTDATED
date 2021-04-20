@@ -29,91 +29,16 @@ namespace BaseLinker_Products_Multitool
             if (!IsEverythingCorrect)
                 return;
 
-            List<ProductSimple> listOfProducts = new List<ProductSimple>();
-            int page = 1;
-
-            Console.WriteLine(Resources.Language.StartedGetProductsList);
-
-            while (true)
-            {
-                int productsInPage = 0;
-                GetProductsListParameters getProductsListParameters = new GetProductsListParameters()
-                {
-                    storage_id = "bl_1",
-                    filter_category_id = category,
-                    page = page
-                };
-
-                string parameters = JsonConvert.SerializeObject(getProductsListParameters);
-
-                JObject response = CallBaseLinker(tokenAPI, "getProductsList", parameters);
-                JValue responseStatus = (JValue)response["status"];
-
-                if (responseStatus.Value.ToString() == "SUCCESS")
-                {
-                    JArray products = (JArray)response["products"];
-                    
-                    foreach (var item in products)
-                    {
-                        string id = item["product_id"].ToString();
-                        string sku = item["sku"].ToString();
-                        string ean = item["ean"].ToString();
-                        string name = item["name"].ToString();
-
-                        ProductSimple baseLinkerProduct = new ProductSimple(id, sku, ean, name);
-                        listOfProducts.Add(baseLinkerProduct);
-                        productsInPage++;
-                    }
-
-                    if (productsInPage == 0)
-                        break;
-
-                    Console.WriteLine(Resources.Language.DownloadedXProducts.Replace("{a}", listOfProducts.Count().ToString()));
-                }
-                else
-                {
-                    Console.WriteLine(Resources.Language.ErrorWhenDownloadProducts + " " + Resources.Language.PressAnythingToBackToMenu);
-                    Console.ReadKey();
-                    return;
-                }
-
-                page++;
-            }
-
-            if(listOfProducts.Count() == 0)
-            {
-                Console.WriteLine(Resources.Language.EmptyListOfProducts + " " + Resources.Language.PressAnythingToBackToMenu);
-                Console.ReadKey();
+            //Get products list from selected BL category, returns:     Item1 - is everything ok     Item2 - list of products
+            var returnFromGetProductsListSimple = GetProductsListSimple(tokenAPI, category);
+            if (returnFromGetProductsListSimple.Item1 == false)
                 return;
-            }
+            List<ProductSimple> listOfProducts = returnFromGetProductsListSimple.Item2;
+            //
 
-            List<string> duplicates = new List<string>();
-
-            switch (checkingKey)
-            {
-                case "sku":
-                    duplicates = listOfProducts.GroupBy(x => x.Sku)
-                      .Where(g => g.Count() > 1)
-                      .Select(y => y.Key)
-                      .ToList();
-                    break;
-
-                case "ean":
-                    duplicates = listOfProducts.GroupBy(x => x.Ean)
-                      .Where(g => g.Count() > 1)
-                      .Select(y => y.Key)
-                      .ToList();
-                    break;
-
-                case "name":
-                    duplicates = listOfProducts.GroupBy(x => x.Name)
-                      .Where(g => g.Count() > 1)
-                      .Select(y => y.Key)
-                      .ToList();
-                    break;
-            }
-
-
+            //Get list of duplicates
+            List<string> duplicates = CheckProductsDuplicates(listOfProducts, checkingKey);
+            //
 
             if(duplicates.Count() > 0)
             {

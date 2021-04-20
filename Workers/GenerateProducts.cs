@@ -40,45 +40,10 @@ namespace BaseLinker_Products_Multitool.Workers
             if (!IsEverythingCorrect)
                 return;
 
-            Console.WriteLine();
-            int quantityOfSuccessResponses = 0;
 
-            for (ulong i = 1; i <= quantityOfNewProducts; i++)
-            {
-                Console.WriteLine(i + "/" + quantityOfNewProducts+" ...");
-
-                AddProductParameters addProductParameters = new AddProductParameters()
-                {
-                    storage_id = "bl_1",
-                    product_id = "",
-                    sku = "sku"+i,
-                    name = "Product"+i,
-                    quantity = 0,
-                    price_brutto = 0.0f,
-                    tax_rate = 0,
-                    category_id = Convert.ToInt32(category),
-                    man_name = ""
-                };
-
-                string parameters = JsonConvert.SerializeObject(addProductParameters);
-
-                JObject response = CallBaseLinker(tokenAPI, "addProduct", parameters);
-                JValue responseStatus = (JValue)response["status"];
-
-                if (responseStatus.Value.ToString() == "SUCCESS")
-                {
-                    Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(i + "/" + quantityOfNewProducts + " OK!");
-                    quantityOfSuccessResponses++;
-                }
-                else
-                {
-                    Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(i + "/" + quantityOfNewProducts + " " + Resources.Language.Error);
-                }
-
-
-            }
+            //Delete duplicates, return quantity of success responses (successful created)
+            int quantityOfSuccessResponses = GenerateNewProducts(quantityOfNewProducts, tokenAPI, category);
+            //
 
             Console.WriteLine();
             Console.WriteLine(Resources.Language.AddedProductsInfo.Replace("{a}", quantityOfSuccessResponses.ToString()).Replace("{b}", quantityOfNewProducts.ToString()));
