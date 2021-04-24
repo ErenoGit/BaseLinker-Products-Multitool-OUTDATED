@@ -12,25 +12,82 @@ namespace BaseLinker_Products_Multitool
 {
     class ProductSimple
     {
-        public string Id { get; set; }
-        public string Sku { get; set; }
-        public string Ean { get; set; }
-        public string Name { get; set; }
+        public string id { get; set; }
+        public string sku { get; set; }
+        public string ean { get; set; }
+        public string name { get; set; }
 
-        public ProductSimple(string id, string sku, string ean, string name)
+        public ProductSimple(string _id, string _sku, string _ean, string _name)
         {
-            Id = id;
-            Sku = sku;
-            Ean = ean;
-            Name = name;
+            id = _id;
+            sku = _sku;
+            ean = _ean;
+            name = _name;
         }
     }
+
+    class ProductFull
+    {
+        public string id { get; set; }
+        public string sku { get; set; }
+        public string ean { get; set; }
+        public string name { get; set; }
+        public int quantity { get; set; }
+        public float price_netto { get; set; }
+        public float price_brutto { get; set; }
+        public float price_wholesale_netto { get; set; }
+        public int tax_rate { get; set; }
+        public float weight { get; set; }
+        public string description { get; set; }
+        public string description_extra1 { get; set; }
+        public string description_extra2 { get; set; }
+        public string description_extra3 { get; set; }
+        public string description_extra4 { get; set; }
+        public string man_name { get; set; }
+        public string man_image { get; set; }
+        public int category_id { get; set; }
+        public Array images { get; set; }
+        public Array features { get; set; }
+        public Array variants { get; set; }
+
+        public ProductFull(string _id, string _sku, string _ean, string _name, int _quantity, float _price_netto, float _price_brutto, float _price_wholesale_netto, int _tax_rate, float _weight, string _description, string _description_extra1, string _description_extra2, string _description_extra3, string _description_extra4, string _man_name, string _man_image, int _category_id, Array _images, Array _features, Array _variants)
+        {
+            id = _id;
+            sku = _sku;
+            ean = _ean;
+            name = _name;
+            quantity = _quantity;
+            price_netto = _price_netto;
+            price_brutto = _price_brutto;
+            price_wholesale_netto = _price_wholesale_netto;
+            tax_rate = _tax_rate;
+            weight = _weight;
+            description = _description;
+            description_extra1 = _description_extra1;
+            description_extra2 = _description_extra2;
+            description_extra3 = _description_extra3;
+            description_extra4 = _description_extra4;
+            man_name = _man_name;
+            man_image = _man_image;
+            category_id = _category_id;
+            images = _images;
+            features = _features;
+            variants = _variants;
+        }
+    }
+
 
     class GetProductsListParameters
     {
         public string storage_id { get; set; }
         public string filter_category_id { get; set; }
         public int page { get; set; }
+        public GetProductsListParameters(string _storage_id, string _filter_category_id, int _page)
+        {
+            storage_id = _storage_id;
+            filter_category_id = _filter_category_id;
+            page = _page;
+        }
     }
 
     class DeleteProductParameters
@@ -202,12 +259,7 @@ namespace BaseLinker_Products_Multitool
             while (true)
             {
                 int productsInPage = 0;
-                GetProductsListParameters getProductsListParameters = new GetProductsListParameters()
-                {
-                    storage_id = "bl_1",
-                    filter_category_id = category,
-                    page = page
-                };
+                GetProductsListParameters getProductsListParameters = new GetProductsListParameters("bl_1", category, page);
 
                 string parameters = JsonConvert.SerializeObject(getProductsListParameters);
 
@@ -262,21 +314,21 @@ namespace BaseLinker_Products_Multitool
             switch (checkingKey)
             {
                 case "sku":
-                    duplicates = listOfProducts.GroupBy(x => x.Sku)
+                    duplicates = listOfProducts.GroupBy(x => x.sku)
                       .Where(g => g.Count() > 1)
                       .Select(y => y.Key)
                       .ToList();
                     break;
 
                 case "ean":
-                    duplicates = listOfProducts.GroupBy(x => x.Ean)
+                    duplicates = listOfProducts.GroupBy(x => x.ean)
                       .Where(g => g.Count() > 1)
                       .Select(y => y.Key)
                       .ToList();
                     break;
 
                 case "name":
-                    duplicates = listOfProducts.GroupBy(x => x.Name)
+                    duplicates = listOfProducts.GroupBy(x => x.name)
                       .Where(g => g.Count() > 1)
                       .Select(y => y.Key)
                       .ToList();
@@ -296,13 +348,13 @@ namespace BaseLinker_Products_Multitool
                 switch (checkingKey)
                 {
                     case "sku":
-                        tempKey = singleProduct.Sku;
+                        tempKey = singleProduct.sku;
                         break;
                     case "ean":
-                        tempKey = singleProduct.Ean;
+                        tempKey = singleProduct.ean;
                         break;
                     case "name":
-                        tempKey = singleProduct.Name;
+                        tempKey = singleProduct.name;
                         break;
                     default:
                         Console.WriteLine(Resources.Language.DownloadedXProducts + " " + Resources.Language.PressAnythingToBackToMenu);
@@ -340,7 +392,7 @@ namespace BaseLinker_Products_Multitool
                 DeleteProductParameters deleteProductParameters = new DeleteProductParameters()
                 {
                     storage_id = "bl_1",
-                    product_id = productToDelete.Id
+                    product_id = productToDelete.id
                 };
 
                 string parameters = JsonConvert.SerializeObject(deleteProductParameters);
@@ -408,8 +460,74 @@ namespace BaseLinker_Products_Multitool
             return quantityOfSuccessResponses;
         }
 
+        public static (bool, List<ProductFull>) GetProductsListFull(List<ProductSimple> listOfProducts, string tokenAPI, string category)
+        {
+            int page = 1;
+            List<ProductFull> listOfProductsFull = new List<ProductFull>();
 
+            Console.WriteLine(Resources.Language.StartedGetProductsListFull);
 
+            while (true)
+            {
+                int productsInPage = 0;
+                GetProductsListParameters getProductsListParameters = new GetProductsListParameters("bl_1", category, page);
 
+                string parameters = JsonConvert.SerializeObject(getProductsListParameters);
+
+                JObject response = CallBaseLinker(tokenAPI, "getProductsData", parameters);
+                JValue responseStatus = (JValue)response["status"];
+
+                if (responseStatus.Value.ToString() == "SUCCESS")
+                {
+                    JArray products = (JArray)response["products"];
+
+                    foreach (var item in products)
+                    {
+                        string id = item["product_id"].ToString();
+                        string sku = item["sku"].ToString();
+                        string ean = item["ean"].ToString();
+                        string name = item["name"].ToString();
+                        int quantity = int.Parse(item["quantity"].ToString());
+                        float price_netto = float.Parse(item["price_netto"].ToString());
+                        float price_brutto = float.Parse(item["price_brutto"].ToString());
+                        float price_wholesale_netto = float.Parse(item["price_wholesale_netto"].ToString());
+                        int tax_rate = int.Parse(item["tax_rate"].ToString());
+                        float weight = float.Parse(item["weight"].ToString());
+                        string description = item["description"].ToString();
+                        string description_extra1 = item["description_extra1"].ToString();
+                        string description_extra2 = item["description_extra2"].ToString();
+                        string description_extra3 = item["description_extra3"].ToString();
+                        string description_extra4 = item["description_extra4"].ToString();
+                        string man_name = item["man_name"].ToString();
+                        string man_image = item["man_image"].ToString();
+                        int category_id = int.Parse(item["category_id"].ToString());
+                        Array images = null;// item["images"];
+                        Array features = null;// item["features"];
+                        Array variants = null;// item["variants"];
+
+                        ProductFull baseLinkerProduct = new ProductFull(id, sku, ean, name, quantity, price_netto, price_brutto, price_wholesale_netto, tax_rate, weight, description, description_extra1, description_extra2, description_extra3, description_extra4, man_name, man_image, category_id, images, features, variants);
+                        listOfProductsFull.Add(baseLinkerProduct);
+                        productsInPage++;
+                    }
+
+                    if (productsInPage == 0)
+                        break;
+
+                    Console.WriteLine(Resources.Language.DownloadedInfoAboutXProducts.Replace("{a}", listOfProductsFull.Count().ToString()));
+                }
+                else
+                {
+                    Console.WriteLine(Resources.Language.ErrorWhenDownloadFullProducts + " " + Resources.Language.PressAnythingToBackToMenu);
+                    Console.ReadKey();
+                    return (false, null);
+                }
+
+                page++;
+            }
+
+            return (true, listOfProductsFull);
         }
+
+
+    }
 }

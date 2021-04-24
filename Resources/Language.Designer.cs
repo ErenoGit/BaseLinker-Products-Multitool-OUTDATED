@@ -88,6 +88,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pobrano szczegółowe informacje o {a} produktach....
+        /// </summary>
+        internal static string DownloadedInfoAboutXProducts {
+            get {
+                return ResourceManager.GetString("DownloadedInfoAboutXProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pobrano {a} produktów....
         /// </summary>
         internal static string DownloadedXProducts {
@@ -138,6 +147,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         internal static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wystąpił błąd podczas pobierania szczegółowych informacji o produktach!.
+        /// </summary>
+        internal static string ErrorWhenDownloadFullProducts {
+            get {
+                return ResourceManager.GetString("ErrorWhenDownloadFullProducts", resourceCulture);
             }
         }
         
@@ -313,7 +331,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Now enter the details of the second BaseLinker account....
+        ///   Looks up a localized string similar to Teraz wprowadź dane drugiego konta BaseLinker....
         /// </summary>
         internal static string NowEnterSecondBL {
             get {
@@ -340,7 +358,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Started removing duplicated products ....
+        ///   Looks up a localized string similar to Rozpoczęto usuwanie zduplikowanych produktów....
         /// </summary>
         internal static string StartedDeleteProduct {
             get {
@@ -354,6 +372,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         internal static string StartedGetProductsList {
             get {
                 return ResourceManager.GetString("StartedGetProductsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rozpoczęto pobieranie szczegółowych informacji o produktach..
+        /// </summary>
+        internal static string StartedGetProductsListFull {
+            get {
+                return ResourceManager.GetString("StartedGetProductsListFull", resourceCulture);
             }
         }
         

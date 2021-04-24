@@ -126,6 +126,9 @@
   <data name="DeletedProductsInfo" xml:space="preserve">
     <value>Successful deleted {a} out of {b} products!</value>
   </data>
+  <data name="DownloadedInfoAboutXProducts" xml:space="preserve">
+    <value>Downloaded products details from {a} products...</value>
+  </data>
   <data name="DownloadedXProducts" xml:space="preserve">
     <value>Downloaded {a} products...</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error!</value>
+  </data>
+  <data name="ErrorWhenDownloadFullProducts" xml:space="preserve">
+    <value>There was an error downloading the products details!</value>
   </data>
   <data name="ErrorWhenDownloadProducts" xml:space="preserve">
     <value>There was an error downloading the product list!</value>
@@ -202,7 +208,7 @@
     <value>No. Return to the main menu!</value>
   </data>
   <data name="NowEnterSecondBL" xml:space="preserve">
-    <value />
+    <value>Now enter the details of the second BaseLinker account...</value>
   </data>
   <data name="NumberOfProductsToDeleteQuestion" xml:space="preserve">
     <value>Number of products to be removed</value>
@@ -211,10 +217,13 @@
     <value>Press any key to return to the main menu...</value>
   </data>
   <data name="StartedDeleteProduct" xml:space="preserve">
-    <value />
+    <value>Started removing duplicated products ...</value>
   </data>
   <data name="StartedGetProductsList" xml:space="preserve">
     <value>Product list download started.</value>
+  </data>
+  <data name="StartedGetProductsListFull" xml:space="preserve">
+    <value>Products details download started.</value>
   </data>
   <data name="WrongMenuInput" xml:space="preserve">
     <value>You entered an incorrect value, select an item from the menu by entering it's number</value>

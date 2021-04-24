@@ -40,10 +40,14 @@ namespace BaseLinker_Products_Multitool
             List<ProductSimple> listOfProducts = returnFromGetProductsListSimple.Item2;
             //
 
+            //Get products list (full products data) from selected BL category, returns:     Item1 - is everything ok     Item2 - list of products
+            var returnGetProductsListFull = GetProductsListFull(listOfProducts, tokenAPI, category);
+            if (returnGetProductsListFull.Item1 == false)
+                return;
+            List<ProductFull> listOfProductsFull = returnGetProductsListFull.Item2;
+            //
 
 
-
-            //TO DO: copy all products from one category in first BL account to second BL account
         }
     }
 }
