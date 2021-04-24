@@ -94,6 +94,11 @@ namespace BaseLinker_Products_Multitool
     {
         public string storage_id { get; set; }
         public string product_id { get; set; }
+        public DeleteProductParameters(string _storage_id, string _product_id)
+        {
+            storage_id = _storage_id;
+            product_id = _product_id;
+        }
     }
 
     class AddProductParameters
@@ -107,6 +112,18 @@ namespace BaseLinker_Products_Multitool
         public int tax_rate { get; set; }
         public int category_id { get; set; }
         public string man_name { get; set; }
+        public AddProductParameters(string _storage_id, string _product_id, string _sku, string _name, int _quantity, float _price_brutto, int _tax_rate, int _category_id, string _man_name)
+        {
+            storage_id = _storage_id;
+            product_id = _product_id;
+            sku = _sku;
+            name = _name;
+            quantity = _quantity;
+            price_brutto = _price_brutto;
+            tax_rate = _tax_rate;
+            category_id = _category_id;
+            man_name = _man_name;
+        }
     }
 
     class GlobalWorkers
@@ -389,11 +406,7 @@ namespace BaseLinker_Products_Multitool
             {
                 Console.WriteLine(productNumber + "/" + countAllProductsToDelete + " ...");
 
-                DeleteProductParameters deleteProductParameters = new DeleteProductParameters()
-                {
-                    storage_id = "bl_1",
-                    product_id = productToDelete.id
-                };
+                DeleteProductParameters deleteProductParameters = new DeleteProductParameters("bl_1", productToDelete.id);
 
                 string parameters = JsonConvert.SerializeObject(deleteProductParameters);
 
@@ -426,18 +439,7 @@ namespace BaseLinker_Products_Multitool
             {
                 Console.WriteLine(i + "/" + quantityOfNewProducts + " ...");
 
-                AddProductParameters addProductParameters = new AddProductParameters()
-                {
-                    storage_id = "bl_1",
-                    product_id = "",
-                    sku = "sku" + i,
-                    name = "Product" + i,
-                    quantity = 0,
-                    price_brutto = 0.0f,
-                    tax_rate = 0,
-                    category_id = Convert.ToInt32(category),
-                    man_name = ""
-                };
+                AddProductParameters addProductParameters = new AddProductParameters("bl_1", "", "sku" + i, "Product" + i, 0, 0.0f, 0, Convert.ToInt32(category), "");
 
                 string parameters = JsonConvert.SerializeObject(addProductParameters);
 
