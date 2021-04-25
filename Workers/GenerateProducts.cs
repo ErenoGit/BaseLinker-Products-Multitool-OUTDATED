@@ -24,6 +24,7 @@ namespace BaseLinker_Products_Multitool.Workers
 
         public static void MassiveGenerateProducts_WorkerAsync()
         {
+            //Individual worker inputs
             string tokenAPI = GetTokenAPI();
             string category = GetCategory();
             UInt64 quantityOfNewProducts = GetQuantityOfNewProducts();
@@ -39,17 +40,19 @@ namespace BaseLinker_Products_Multitool.Workers
 
             if (!IsEverythingCorrect)
                 return;
-
+            //
 
             //Delete duplicates, return quantity of success responses (successful created)
             int quantityOfSuccessResponses = GenerateNewProducts(quantityOfNewProducts, tokenAPI, category);
             //
 
+            //End info
             Console.WriteLine();
             Console.WriteLine(Resources.Language.AddedProductsInfo.Replace("{a}", quantityOfSuccessResponses.ToString()).Replace("{b}", quantityOfNewProducts.ToString()));
 
             Console.WriteLine(Resources.Language.PressAnythingToBackToMenu);
             Console.ReadKey();
+            //
         }
     }
 }

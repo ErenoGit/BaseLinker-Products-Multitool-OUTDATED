@@ -13,6 +13,7 @@ namespace BaseLinker_Products_Multitool
     {
         public static void CheckAndDeleteDuplicates_Worker()
         {
+            //Individual worker inputs
             string tokenAPI = GetTokenAPI();
             string category = GetCategory();
             string checkingKey = GetCheckingKey();
@@ -27,6 +28,7 @@ namespace BaseLinker_Products_Multitool
 
             if (!IsEverythingCorrect)
                 return;
+            //
 
             //Get products list from selected BL category, returns:     Item1 - is everything ok     Item2 - list of products
             var returnFromGetProductsListSimple = GetProductsListSimple(tokenAPI, category);
@@ -39,7 +41,7 @@ namespace BaseLinker_Products_Multitool
             List<string> duplicates = CheckProductsDuplicates(listOfProducts, checkingKey);
             //
 
-
+            //Info about duplicates
             if (duplicates.Count() > 0)
             {
                 foreach (var item in duplicates)
@@ -60,6 +62,7 @@ namespace BaseLinker_Products_Multitool
 
             if (reverseCheckingDuplicatesForDelete)
                 listOfProducts.Reverse();
+            //
 
             //Delete duplicates, returns:     Item1 - is everything ok     Item2 - count of all products to delete     Item3 - quantity of success responses (successful deleted)
             var resultDeleteDuplicates = DeleteDuplicates(listOfProducts, checkingKey, tokenAPI);
@@ -69,11 +72,13 @@ namespace BaseLinker_Products_Multitool
             int quantityOfSuccessResponses = resultDeleteDuplicates.Item3;
             //
 
+            //End info
             Console.WriteLine();
             Console.WriteLine(Resources.Language.DeletedProductsInfo.Replace("{a}", quantityOfSuccessResponses.ToString()).Replace("{b}", countAllProductsToDelete.ToString()));
 
             Console.WriteLine(Resources.Language.PressAnythingToBackToMenu);
             Console.ReadKey();
+            //
 
         }
 

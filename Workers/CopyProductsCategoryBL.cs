@@ -13,6 +13,7 @@ namespace BaseLinker_Products_Multitool
     {
         public static void CopyCategoryProductsBetweenBaselinkerAccounts_Worker()
         {
+            //individual worker inputs
             string tokenAPI = GetTokenAPI();
             string category = GetCategory();
 
@@ -32,6 +33,7 @@ namespace BaseLinker_Products_Multitool
 
             if (!IsEverythingCorrect)
                 return;
+            //
 
             //Get products list from selected BL category, returns:     Item1 - is everything ok     Item2 - list of products
             var returnFromGetProductsListSimple = GetProductsListSimple(tokenAPI, category);

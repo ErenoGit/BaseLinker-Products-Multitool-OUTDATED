@@ -14,6 +14,7 @@ namespace BaseLinker_Products_Multitool
     {
         public static void CheckIsDuplicatesExist_Worker()
         {
+            //individual worker inputs
             string tokenAPI = GetTokenAPI();
             string category = GetCategory();
             string checkingKey = GetCheckingKey();
@@ -28,6 +29,7 @@ namespace BaseLinker_Products_Multitool
 
             if (!IsEverythingCorrect)
                 return;
+            //
 
             //Get products list from selected BL category, returns:     Item1 - is everything ok     Item2 - list of products
             var returnFromGetProductsListSimple = GetProductsListSimple(tokenAPI, category);
@@ -40,7 +42,8 @@ namespace BaseLinker_Products_Multitool
             List<string> duplicates = CheckProductsDuplicates(listOfProducts, checkingKey);
             //
 
-            if(duplicates.Count() > 0)
+            //Info about duplicates
+            if (duplicates.Count() > 0)
             {
                 foreach (var item in duplicates)
                 {
@@ -58,6 +61,7 @@ namespace BaseLinker_Products_Multitool
                 Console.ReadKey();
                 return;
             }
+            //
 
         }
     }
