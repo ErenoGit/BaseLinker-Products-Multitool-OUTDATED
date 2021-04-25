@@ -530,6 +530,12 @@ namespace BaseLinker_Products_Multitool
             return (true, listOfProductsFull);
         }
 
+        public static ulong GetQuantityOfNewProducts()
+        {
+            Console.WriteLine();
+            Console.WriteLine(Resources.Language.EnterQuantityOfNewProducts + " (max 18446744073709551615)");
+            return Convert.ToUInt64(Console.ReadLine());
+        }
 
     }
 }

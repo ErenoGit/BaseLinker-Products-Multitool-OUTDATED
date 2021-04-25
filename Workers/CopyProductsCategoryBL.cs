@@ -13,7 +13,7 @@ namespace BaseLinker_Products_Multitool
     {
         public static void CopyCategoryProductsBetweenBaselinkerAccounts_Worker()
         {
-            //individual worker inputs
+            //Individual worker inputs
             string tokenAPI = GetTokenAPI();
             string category = GetCategory();
 

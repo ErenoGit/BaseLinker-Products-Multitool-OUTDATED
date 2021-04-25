@@ -15,12 +15,6 @@ namespace BaseLinker_Products_Multitool.Workers
 {
     class GenerateProducts
     {
-        private static ulong GetQuantityOfNewProducts()
-        {
-            Console.WriteLine();
-            Console.WriteLine(Resources.Language.EnterQuantityOfNewProducts + " (max 18446744073709551615)");
-            return Convert.ToUInt64(Console.ReadLine());
-        }
 
         public static void MassiveGenerateProducts_WorkerAsync()
         {
