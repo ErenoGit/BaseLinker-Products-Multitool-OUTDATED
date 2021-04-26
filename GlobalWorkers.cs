@@ -90,6 +90,17 @@ namespace BaseLinker_Products_Multitool
         }
     }
 
+    class GetProductsDataParameters
+    {
+        public string storage_id { get; set; }
+        public Array products { get; set; }
+        public GetProductsDataParameters(string _storage_id, Array _products)
+        {
+            storage_id = _storage_id;
+            products = _products;
+        }
+    }
+
     class DeleteProductParameters
     {
         public string storage_id { get; set; }
@@ -464,26 +475,33 @@ namespace BaseLinker_Products_Multitool
 
         public static (bool, List<ProductFull>) GetProductsListFull(List<ProductSimple> listOfProducts, string tokenAPI, string category)
         {
-            int page = 1;
+            List<string> listOfProductsIds = new List<string>();
+            foreach (var item in listOfProducts)
+            {
+                listOfProductsIds.Add(item.id);
+            }
+            List<List<string>> splittedListOfProductsIds = SplitList(listOfProductsIds, 1000);
+
+
             List<ProductFull> listOfProductsFull = new List<ProductFull>();
 
             Console.WriteLine(Resources.Language.StartedGetProductsListFull);
 
-            while (true)
+            foreach (List<string> listOf1000ProductsIds in splittedListOfProductsIds)
             {
+                Array productsArray = listOf1000ProductsIds.ToArray();
                 int productsInPage = 0;
-                GetProductsListParameters getProductsListParameters = new GetProductsListParameters("bl_1", category, page);
+                GetProductsDataParameters getProductsDataParameters = new GetProductsDataParameters("bl_1", productsArray);
 
-                string parameters = JsonConvert.SerializeObject(getProductsListParameters);
+                string parameters = JsonConvert.SerializeObject(getProductsDataParameters);
 
                 JObject response = CallBaseLinker(tokenAPI, "getProductsData", parameters);
                 JValue responseStatus = (JValue)response["status"];
 
                 if (responseStatus.Value.ToString() == "SUCCESS")
                 {
-                    JArray products = (JArray)response["products"];
-
-                    foreach (var item in products)
+                    JArray product = new JArray();
+                    foreach (var item in response["products"].Children().Children())
                     {
                         string id = item["product_id"].ToString();
                         string sku = item["sku"].ToString();
@@ -503,9 +521,9 @@ namespace BaseLinker_Products_Multitool
                         string man_name = item["man_name"].ToString();
                         string man_image = item["man_image"].ToString();
                         int category_id = int.Parse(item["category_id"].ToString());
-                        Array images = null;// item["images"];
-                        Array features = null;// item["features"];
-                        Array variants = null;// item["variants"];
+                        Array images = null;//item["images"]?.ToObject<Array>();
+                        Array features = null;//item["features"]?.ToObject<Array>();
+                        Array variants = null;//item["variants"]?.ToObject<Array>();
 
                         ProductFull baseLinkerProduct = new ProductFull(id, sku, ean, name, quantity, price_netto, price_brutto, price_wholesale_netto, tax_rate, weight, description, description_extra1, description_extra2, description_extra3, description_extra4, man_name, man_image, category_id, images, features, variants);
                         listOfProductsFull.Add(baseLinkerProduct);
@@ -523,11 +541,21 @@ namespace BaseLinker_Products_Multitool
                     Console.ReadKey();
                     return (false, null);
                 }
-
-                page++;
             }
 
             return (true, listOfProductsFull);
+        }
+
+        public static List<List<string>> SplitList(List<string> locations, int nSize = 1000)
+        {
+            var list = new List<List<string>>();
+
+            for (int i = 0; i < locations.Count; i += nSize)
+            {
+                list.Add(locations.GetRange(i, Math.Min(nSize, locations.Count - i)));
+            }
+
+            return list;
         }
 
         public static ulong GetQuantityOfNewProducts()

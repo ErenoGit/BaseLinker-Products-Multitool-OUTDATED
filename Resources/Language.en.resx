@@ -237,13 +237,19 @@
   <data name="YourOptionsAPI" xml:space="preserve">
     <value>Token API</value>
   </data>
-  <data name="YourOptionsAPI2" xml:space="preserve">
+  <data name="YourOptionsAPISource" xml:space="preserve">
+    <value>Source account API token</value>
+  </data>
+  <data name="YourOptionsAPITarget" xml:space="preserve">
     <value>Target account API token</value>
   </data>
   <data name="YourOptionsCategory" xml:space="preserve">
     <value>Products category</value>
   </data>
-  <data name="YourOptionsCategory2" xml:space="preserve">
+  <data name="YourOptionsCategorySource" xml:space="preserve">
+    <value>Source products category</value>
+  </data>
+  <data name="YourOptionsCategoryTarget" xml:space="preserve">
     <value>Target products category</value>
   </data>
   <data name="YourOptionsCheckKey" xml:space="preserve">

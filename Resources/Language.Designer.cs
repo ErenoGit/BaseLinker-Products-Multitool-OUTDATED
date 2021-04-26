@@ -421,11 +421,20 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Token API źródłowego konta.
+        /// </summary>
+        internal static string YourOptionsAPISource {
+            get {
+                return ResourceManager.GetString("YourOptionsAPISource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Token API docelowego konta.
         /// </summary>
-        internal static string YourOptionsAPI2 {
+        internal static string YourOptionsAPITarget {
             get {
-                return ResourceManager.GetString("YourOptionsAPI2", resourceCulture);
+                return ResourceManager.GetString("YourOptionsAPITarget", resourceCulture);
             }
         }
         
@@ -439,11 +448,20 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Źródłowa kategoria produktów.
+        /// </summary>
+        internal static string YourOptionsCategorySource {
+            get {
+                return ResourceManager.GetString("YourOptionsCategorySource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Docelowa kategoria produktów.
         /// </summary>
-        internal static string YourOptionsCategory2 {
+        internal static string YourOptionsCategoryTarget {
             get {
-                return ResourceManager.GetString("YourOptionsCategory2", resourceCulture);
+                return ResourceManager.GetString("YourOptionsCategoryTarget", resourceCulture);
             }
         }
         
