@@ -20,7 +20,7 @@ namespace BaseLinker_Products_Multitool
             Console.WriteLine(Resources.Language.NowEnterSecondBL);
 
             string tokenAPITarget = GetTokenAPI();
-            string category2Target = GetCategory();
+            string categoryTarget = GetCategory();
 
             Console.WriteLine();
             Console.WriteLine(Resources.Language.YourOptions + ":");
@@ -28,7 +28,7 @@ namespace BaseLinker_Products_Multitool
             Console.WriteLine(Resources.Language.YourOptionsCategorySource + ": " + categorySource);
             Console.WriteLine();
             Console.WriteLine(Resources.Language.YourOptionsAPITarget + ": " + tokenAPITarget);
-            Console.WriteLine(Resources.Language.YourOptionsCategoryTarget + ": " + category2Target);
+            Console.WriteLine(Resources.Language.YourOptionsCategoryTarget + ": " + categoryTarget);
 
             bool IsEverythingCorrect = CheckIsEverythingCorrect();
 
@@ -50,7 +50,15 @@ namespace BaseLinker_Products_Multitool
             List<ProductFull> listOfProductsFull = returnGetProductsListFull.Item2;
             //
 
-            Console.WriteLine("listOfProductsFull.Count() = " + listOfProductsFull.Count());
+
+
+
+
+            //TO DO: Add to tokenAPITarget and categoryTarget products from listOfProductsFull
+
+
+
+
 
         }
     }

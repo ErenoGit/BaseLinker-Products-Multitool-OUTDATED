@@ -490,7 +490,6 @@ namespace BaseLinker_Products_Multitool
             foreach (List<string> listOf1000ProductsIds in splittedListOfProductsIds)
             {
                 Array productsArray = listOf1000ProductsIds.ToArray();
-                int productsInPage = 0;
                 GetProductsDataParameters getProductsDataParameters = new GetProductsDataParameters("bl_1", productsArray);
 
                 string parameters = JsonConvert.SerializeObject(getProductsDataParameters);
@@ -501,7 +500,7 @@ namespace BaseLinker_Products_Multitool
                 if (responseStatus.Value.ToString() == "SUCCESS")
                 {
                     JArray product = new JArray();
-                    foreach (var item in response["products"].Children().Children())
+                    foreach (JToken item in response["products"].Children().Children())
                     {
                         string id = item["product_id"].ToString();
                         string sku = item["sku"].ToString();
@@ -521,17 +520,17 @@ namespace BaseLinker_Products_Multitool
                         string man_name = item["man_name"].ToString();
                         string man_image = item["man_image"].ToString();
                         int category_id = int.Parse(item["category_id"].ToString());
-                        Array images = null;//item["images"]?.ToObject<Array>();
-                        Array features = null;//item["features"]?.ToObject<Array>();
-                        Array variants = null;//item["variants"]?.ToObject<Array>();
+
+                        Array images = null;
+                        if (item["images"].HasValues) images = item["images"].ToObject<Array>();
+                        Array features = null;
+                        if (item["features"].HasValues) features = item["features"].ToObject<Array>();
+                        Array variants = null;
+                        if (item["variants"].HasValues) variants = item["variants"].ToObject<Array>();
 
                         ProductFull baseLinkerProduct = new ProductFull(id, sku, ean, name, quantity, price_netto, price_brutto, price_wholesale_netto, tax_rate, weight, description, description_extra1, description_extra2, description_extra3, description_extra4, man_name, man_image, category_id, images, features, variants);
                         listOfProductsFull.Add(baseLinkerProduct);
-                        productsInPage++;
                     }
-
-                    if (productsInPage == 0)
-                        break;
 
                     Console.WriteLine(Resources.Language.DownloadedInfoAboutXProducts.Replace("{a}", listOfProductsFull.Count().ToString()));
                 }
