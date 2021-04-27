@@ -21,7 +21,7 @@ namespace BaseLinker_Products_Multitool.Workers
             //Individual worker inputs
             string tokenAPI = GetTokenAPI();
             string category = GetCategory();
-            UInt64 quantityOfNewProducts = GetQuantityOfNewProducts();
+            int quantityOfNewProducts = GetQuantityOfNewProducts();
 
 
             Console.WriteLine();
@@ -36,7 +36,7 @@ namespace BaseLinker_Products_Multitool.Workers
                 return;
             //
 
-            //Delete duplicates, return quantity of success responses (successful created)
+            //Delete duplicates, return quantity of success responses (successful deleted)
             int quantityOfSuccessResponses = GenerateNewProducts(quantityOfNewProducts, tokenAPI, category);
             //
 

@@ -112,7 +112,7 @@ namespace BaseLinker_Products_Multitool
         }
     }
 
-    class AddProductParameters
+    class AddProductSimpleParameters
     {
         public string storage_id { get; set; }
         public string product_id { get; set; }
@@ -123,7 +123,7 @@ namespace BaseLinker_Products_Multitool
         public int tax_rate { get; set; }
         public int category_id { get; set; }
         public string man_name { get; set; }
-        public AddProductParameters(string _storage_id, string _product_id, string _sku, string _name, int _quantity, float _price_brutto, int _tax_rate, int _category_id, string _man_name)
+        public AddProductSimpleParameters(string _storage_id, string _product_id, string _sku, string _name, int _quantity, float _price_brutto, int _tax_rate, string _man_name, int _category_id)
         {
             storage_id = _storage_id;
             product_id = _product_id;
@@ -132,8 +132,52 @@ namespace BaseLinker_Products_Multitool
             quantity = _quantity;
             price_brutto = _price_brutto;
             tax_rate = _tax_rate;
-            category_id = _category_id;
             man_name = _man_name;
+            category_id = _category_id;
+        }
+    }
+
+    class AddProductFullParameters
+    {
+        public string storage_id { get; set; }
+        public string product_id { get; set; }
+        public string sku { get; set; }
+        public string name { get; set; }
+        public int quantity { get; set; }
+        public float price_brutto { get; set; }
+        public float price_wholesale_netto { get; set; }
+        public int tax_rate { get; set; }
+        public float weight { get; set; }
+        public string description { get; set; }
+        public string description_extra1 { get; set; }
+        public string description_extra2 { get; set; }
+        public string description_extra3 { get; set; }
+        public string description_extra4 { get; set; }
+        public string man_name { get; set; }
+        public int category_id { get; set; }
+        public Array images { get; set; }
+        public Array features { get; set; }
+
+        public AddProductFullParameters(string _storage_id, string _product_id, string _sku, string _name, int _quantity, float _price_brutto, float _price_wholesale_netto, int _tax_rate, float _weight, string _description, string _description_extra1, string _description_extra2, string _description_extra3, string _description_extra4, string _man_name, int _category_id, Array _images, Array _features)
+        {
+            storage_id = _storage_id;
+            product_id = _product_id;
+            sku = _sku;
+            name = _name;
+            quantity = _quantity;
+            price_brutto = _price_brutto;
+            price_wholesale_netto = _price_wholesale_netto;
+            tax_rate = _tax_rate;
+            weight = _weight;
+            description = _description;
+            description_extra1 = _description_extra1;
+            description_extra2 = _description_extra2;
+            description_extra3 = _description_extra3;
+            description_extra4 = _description_extra4;
+            man_name = _man_name;
+            category_id = _category_id;
+            images = _images;
+            features = _features;
         }
     }
 
@@ -441,16 +485,16 @@ namespace BaseLinker_Products_Multitool
             return (true, countAllProductsToDelete, quantityOfSuccessResponses);
         }
 
-        public static int GenerateNewProducts(ulong quantityOfNewProducts, string tokenAPI, string category)
+        public static int GenerateNewProducts(int quantityOfNewProducts, string tokenAPI, string category)
         {
             Console.WriteLine();
             int quantityOfSuccessResponses = 0;
 
-            for (ulong i = 1; i <= quantityOfNewProducts; i++)
+            for (int i = 1; i <= quantityOfNewProducts; i++)
             {
                 Console.WriteLine(i + "/" + quantityOfNewProducts + " ...");
 
-                AddProductParameters addProductParameters = new AddProductParameters("bl_1", "", "sku" + i, "Product" + i, 0, 0.0f, 0, Convert.ToInt32(category), "");
+                AddProductSimpleParameters addProductParameters = new AddProductSimpleParameters("bl_1", "", "sku" + i, "Product" + i, 0, 0.0f, 0, "", Convert.ToInt32(category));
 
                 string parameters = JsonConvert.SerializeObject(addProductParameters);
 
@@ -468,6 +512,40 @@ namespace BaseLinker_Products_Multitool
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
                     Console.WriteLine(i + "/" + quantityOfNewProducts + " " + Resources.Language.Error);
                 }
+            }
+
+            return quantityOfSuccessResponses;
+        }
+
+        public static int AddNewProducts(List<ProductFull> newProducts, string tokenAPI, string category)
+        {
+            Console.WriteLine();
+            int quantityOfSuccessResponses = 0;
+            int i = 1;
+            foreach (ProductFull product in newProducts)
+            {
+                Console.WriteLine(i + "/" + newProducts.Count() + " ...");
+
+                AddProductFullParameters addProductParameters = new AddProductFullParameters("bl_1", "", product.sku, product.name, product.quantity, product.price_brutto, product.price_wholesale_netto, product.tax_rate, product.weight, product.description, product.description_extra1, product.description_extra2, product.description_extra3, product.description_extra4, product.man_name, product.category_id, product.images, product.features);
+
+                string parameters = JsonConvert.SerializeObject(addProductParameters);
+
+                JObject response = CallBaseLinker(tokenAPI, "addProduct", parameters);
+                JValue responseStatus = (JValue)response["status"];
+
+                if (responseStatus.Value.ToString() == "SUCCESS")
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Console.WriteLine(i + "/" + newProducts.Count() + " OK!");
+                    quantityOfSuccessResponses++;
+                }
+                else
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Console.WriteLine(i + "/" + newProducts.Count() + " " + Resources.Language.Error);
+                }
+
+                i++;
             }
 
             return quantityOfSuccessResponses;
@@ -557,11 +635,11 @@ namespace BaseLinker_Products_Multitool
             return list;
         }
 
-        public static ulong GetQuantityOfNewProducts()
+        public static int GetQuantityOfNewProducts()
         {
             Console.WriteLine();
-            Console.WriteLine(Resources.Language.EnterQuantityOfNewProducts + " (max 18446744073709551615)");
-            return Convert.ToUInt64(Console.ReadLine());
+            Console.WriteLine(Resources.Language.EnterQuantityOfNewProducts + " (max 2147483647)");
+            return Convert.ToInt32(Console.ReadLine());
         }
 
     }

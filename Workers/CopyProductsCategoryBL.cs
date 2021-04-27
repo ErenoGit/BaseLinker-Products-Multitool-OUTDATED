@@ -50,11 +50,12 @@ namespace BaseLinker_Products_Multitool
             List<ProductFull> listOfProductsFull = returnGetProductsListFull.Item2;
             //
 
+            //Add products, return quantity of success responses (successful created)
+            int quantityOfSuccessResponses = AddNewProducts(listOfProductsFull, tokenAPITarget, categoryTarget);
+            //
 
 
 
-
-            //TO DO: Add to tokenAPITarget and categoryTarget products from listOfProductsFull
 
 
 
