@@ -225,6 +225,9 @@
   <data name="PressAnythingToBackToMenu" xml:space="preserve">
     <value>Wciśnij dowolny klawisz aby wrócić do menu głównego...</value>
   </data>
+  <data name="ResponsibilityInfo" xml:space="preserve">
+    <value>Nie ponoszę odpowiedzialności za szkody wyrządzone na koncie BaseLinker spowodowane nieumiejętnym użyciem programu!</value>
+  </data>
   <data name="StartedDeleteProduct" xml:space="preserve">
     <value>Rozpoczęto usuwanie zduplikowanych produktów...</value>
   </data>

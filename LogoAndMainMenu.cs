@@ -21,6 +21,8 @@ namespace BaseLinker_Products_Multitool
         {
             char menuInput;
             Console.WriteLine("================ "+ Resources.Language.MainMenu + " ================");
+            Console.WriteLine(Resources.Language.ResponsibilityInfo);
+            Console.WriteLine();
             Console.WriteLine("1. "+ Resources.Language.Menu1);
             Console.WriteLine("2. "+ Resources.Language.Menu2);
             Console.WriteLine();
