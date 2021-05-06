@@ -132,6 +132,9 @@
   <data name="DownloadedXProducts" xml:space="preserve">
     <value>Downloaded {a} products...</value>
   </data>
+  <data name="DoYouUnderstandAndAgree" xml:space="preserve">
+    <value>Do you understand the above and do you want to continue copying products?</value>
+  </data>
   <data name="EmptyListOfProducts" xml:space="preserve">
     <value>Empty products list!</value>
   </data>
@@ -180,11 +183,17 @@
   <data name="HowToDeleteDuplicates2" xml:space="preserve">
     <value>Out of the duplicated products leave one with the lowest ID (the oldest one added to the products category)</value>
   </data>
+  <data name="InfoAboutImages" xml:space="preserve">
+    <value>ATTENTION! Due to API restrictions, the photos sent will be arranged one after the other! For example, if a product has a main photo, additional photo 7 and additional photo 10, then the copy of this product will have the main photo, additional photo 1 and additional photo 2! If the product has an additional photo 5 and an additional photo 12, the copy of this product will have the main photo and additional photo 1!</value>
+  </data>
+  <data name="InfoAboutVariantsPrices" xml:space="preserve">
+    <value>ATTENTION! If the product have variant without an assigned price, variant in the copied product will have the price 1.00!</value>
+  </data>
   <data name="InfoNoDuplicates" xml:space="preserve">
     <value>There are no duplicates!</value>
   </data>
   <data name="IsEverythingCorrect" xml:space="preserve">
-    <value>Are the above settings correct?</value>
+    <value>Are all the above settings correct?</value>
   </data>
   <data name="MainMenu" xml:space="preserve">
     <value>MAIN MENU</value>
@@ -224,6 +233,9 @@
   </data>
   <data name="StartedGetProductsListFull" xml:space="preserve">
     <value>Products details download started.</value>
+  </data>
+  <data name="Variant" xml:space="preserve">
+    <value>Variant</value>
   </data>
   <data name="WrongMenuInput" xml:space="preserve">
     <value>You entered an incorrect value, select an item from the menu by entering it's number</value>

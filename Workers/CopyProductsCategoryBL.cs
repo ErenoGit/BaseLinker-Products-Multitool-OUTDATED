@@ -17,7 +17,9 @@ namespace BaseLinker_Products_Multitool
             string tokenAPISource = GetTokenAPI();
             string categorySource = GetCategory();
 
+            Console.WriteLine();
             Console.WriteLine(Resources.Language.NowEnterSecondBL);
+            Console.WriteLine();
 
             string tokenAPITarget = GetTokenAPI();
             string categoryTarget = GetCategory();
@@ -29,6 +31,13 @@ namespace BaseLinker_Products_Multitool
             Console.WriteLine();
             Console.WriteLine(Resources.Language.YourOptionsAPITarget + ": " + tokenAPITarget);
             Console.WriteLine(Resources.Language.YourOptionsCategoryTarget + ": " + categoryTarget);
+
+            bool IsEverythingCorrectInfoAboutImages = CheckIsEverythingCorrectInfoAboutImages();
+
+            if (!IsEverythingCorrectInfoAboutImages)
+                return;
+
+            Console.WriteLine();
 
             bool IsEverythingCorrect = CheckIsEverythingCorrect();
 
@@ -54,12 +63,13 @@ namespace BaseLinker_Products_Multitool
             int quantityOfSuccessResponses = AddNewProducts(listOfProductsFull, tokenAPITarget, categoryTarget);
             //
 
+            //End info
+            Console.WriteLine();
+            Console.WriteLine(Resources.Language.AddedProductsInfo.Replace("{a}", quantityOfSuccessResponses.ToString()).Replace("{b}", listOfProductsFull.Count().ToString()));
 
-
-
-
-
-
+            Console.WriteLine(Resources.Language.PressAnythingToBackToMenu);
+            Console.ReadKey();
+            //
 
         }
     }

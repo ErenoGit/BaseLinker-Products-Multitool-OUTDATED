@@ -106,6 +106,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Czy rozumiesz powyższe oraz chcesz kontynuować kopiowanie produktów?.
+        /// </summary>
+        internal static string DoYouUnderstandAndAgree {
+            get {
+                return ResourceManager.GetString("DoYouUnderstandAndAgree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pusta listów produktów!.
         /// </summary>
         internal static string EmptyListOfProducts {
@@ -250,7 +259,25 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are no duplicates!.
+        ///   Looks up a localized string similar to UWAGA! Przez ograniczenia API przesyłane zdjęcia ułożą się po kolei! Przykładowo jeśli produkt posiada zdjęcie główne, zdjęcie dodatkowe 7 oraz zdjęcie dodatkowe 10, to kopia tego produktu będzie miała zdjęcie główne, zdjęcie dodatkowe 1 oraz zdjęcie dodatkowe 2! Jeśli produkt posiada zdjęcie dodatkowe 5 i zdjęcie dodatkowe 12  to kopia tego produktu będzie miała zdjęcie główne i zdjęcie dodatkowe 1!.
+        /// </summary>
+        internal static string InfoAboutImages {
+            get {
+                return ResourceManager.GetString("InfoAboutImages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UWAGA! Jeśli produkt posiada wariant bez przypisanej ceny, w wariancie w skopiowanym produkcie będzie cena 1,00!.
+        /// </summary>
+        internal static string InfoAboutVariantsPrices {
+            get {
+                return ResourceManager.GetString("InfoAboutVariantsPrices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nie ma duplikatów!.
         /// </summary>
         internal static string InfoNoDuplicates {
             get {
@@ -259,7 +286,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Czy powyższe ustawienia są poprawne?.
+        ///   Looks up a localized string similar to Czy wszystkie powyższe ustawienia są poprawne?.
         /// </summary>
         internal static string IsEverythingCorrect {
             get {
@@ -381,6 +408,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         internal static string StartedGetProductsListFull {
             get {
                 return ResourceManager.GetString("StartedGetProductsListFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wariant.
+        /// </summary>
+        internal static string Variant {
+            get {
+                return ResourceManager.GetString("Variant", resourceCulture);
             }
         }
         

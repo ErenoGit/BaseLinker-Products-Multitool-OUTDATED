@@ -2,9 +2,11 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,6 +26,16 @@ namespace BaseLinker_Products_Multitool
             ean = _ean;
             name = _name;
         }
+    }
+
+    class Variant
+    {
+        public string variant_id { get; set; }
+        public string name { get; set; }
+        public float price { get; set; }
+        public int quantity { get; set; }
+        public string ean { get; set; }
+        public string sku { get; set; }
     }
 
     class ProductFull
@@ -46,11 +58,11 @@ namespace BaseLinker_Products_Multitool
         public string man_name { get; set; }
         public string man_image { get; set; }
         public int category_id { get; set; }
-        public Array images { get; set; }
-        public Array features { get; set; }
-        public Array variants { get; set; }
+        public List<String> images { get; set; }
+        public List<Dictionary<string, string>> features { get; set; }
+        public List<Variant> variants { get; set; }
 
-        public ProductFull(string _id, string _sku, string _ean, string _name, int _quantity, float _price_netto, float _price_brutto, float _price_wholesale_netto, int _tax_rate, float _weight, string _description, string _description_extra1, string _description_extra2, string _description_extra3, string _description_extra4, string _man_name, string _man_image, int _category_id, Array _images, Array _features, Array _variants)
+        public ProductFull(string _id, string _sku, string _ean, string _name, int _quantity, float _price_netto, float _price_brutto, float _price_wholesale_netto, int _tax_rate, float _weight, string _description, string _description_extra1, string _description_extra2, string _description_extra3, string _description_extra4, string _man_name, string _man_image, int _category_id, List<String> _images, List<Dictionary<string, string>> _features, List<Variant> _variants)
         {
             id = _id;
             sku = _sku;
@@ -117,17 +129,19 @@ namespace BaseLinker_Products_Multitool
         public string storage_id { get; set; }
         public string product_id { get; set; }
         public string sku { get; set; }
+        public string ean { get; set; }
         public string name { get; set; }
         public int quantity { get; set; }
         public float price_brutto { get; set; }
         public int tax_rate { get; set; }
         public int category_id { get; set; }
         public string man_name { get; set; }
-        public AddProductSimpleParameters(string _storage_id, string _product_id, string _sku, string _name, int _quantity, float _price_brutto, int _tax_rate, string _man_name, int _category_id)
+        public AddProductSimpleParameters(string _storage_id, string _product_id, string _sku, string _ean, string _name, int _quantity, float _price_brutto, int _tax_rate, string _man_name, int _category_id)
         {
             storage_id = _storage_id;
             product_id = _product_id;
             sku = _sku;
+            ean = _ean;
             name = _name;
             quantity = _quantity;
             price_brutto = _price_brutto;
@@ -141,6 +155,7 @@ namespace BaseLinker_Products_Multitool
     {
         public string storage_id { get; set; }
         public string product_id { get; set; }
+        public string ean { get; set; }
         public string sku { get; set; }
         public string name { get; set; }
         public int quantity { get; set; }
@@ -155,13 +170,14 @@ namespace BaseLinker_Products_Multitool
         public string description_extra4 { get; set; }
         public string man_name { get; set; }
         public int category_id { get; set; }
-        public Array images { get; set; }
-        public Array features { get; set; }
+        public List<String> images { get; set; }
+        public List<Dictionary<string, string>> features { get; set; }
 
-        public AddProductFullParameters(string _storage_id, string _product_id, string _sku, string _name, int _quantity, float _price_brutto, float _price_wholesale_netto, int _tax_rate, float _weight, string _description, string _description_extra1, string _description_extra2, string _description_extra3, string _description_extra4, string _man_name, int _category_id, Array _images, Array _features)
+        public AddProductFullParameters(string _storage_id, string _product_id, string _ean, string _sku, string _name, int _quantity, float _price_brutto, float _price_wholesale_netto, int _tax_rate, float _weight, string _description, string _description_extra1, string _description_extra2, string _description_extra3, string _description_extra4, string _man_name, int _category_id, List<String> _images, List<Dictionary<string, string>> _features)
         {
             storage_id = _storage_id;
             product_id = _product_id;
+            ean = _ean;
             sku = _sku;
             name = _name;
             quantity = _quantity;
@@ -178,6 +194,27 @@ namespace BaseLinker_Products_Multitool
             category_id = _category_id;
             images = _images;
             features = _features;
+        }
+    }
+
+    class AddProductVariantParameters
+    {
+        public string storage_id { get; set; }
+        public string product_id { get; set; }
+        public string sku { get; set; }
+        public string ean { get; set; }
+        public string name { get; set; }
+        public int quantity { get; set; }
+        public float price_brutto { get; set; }
+        public AddProductVariantParameters(string _storage_id, string _product_id, string _sku, string _ean, string _name, int _quantity, float _price_brutto)
+        {
+            storage_id = _storage_id;
+            product_id = _product_id;
+            sku = _sku;
+            ean = _ean;
+            name = _name;
+            quantity = _quantity;
+            price_brutto = _price_brutto;
         }
     }
 
@@ -253,6 +290,32 @@ namespace BaseLinker_Products_Multitool
             Console.WriteLine("1. " + Resources.Language.Yes);
             Console.WriteLine("2. " + Resources.Language.No);
             
+            while (true)
+            {
+                isEverythingCorrect = Console.ReadKey(true).KeyChar;
+
+                if (isEverythingCorrect == '1')
+                    return true;
+                else if (isEverythingCorrect == '2')
+                    return false;
+                else
+                    Console.WriteLine(Resources.Language.WrongMenuInput);
+            }
+        }
+
+        public static bool CheckIsEverythingCorrectInfoAboutImages()
+        {
+            char isEverythingCorrect;
+
+            Console.WriteLine();
+            Console.WriteLine(Resources.Language.InfoAboutImages);
+            Console.WriteLine();
+            Console.WriteLine(Resources.Language.InfoAboutVariantsPrices);
+            Console.WriteLine();
+            Console.WriteLine(Resources.Language.DoYouUnderstandAndAgree);
+            Console.WriteLine("1. " + Resources.Language.Yes);
+            Console.WriteLine("2. " + Resources.Language.No);
+
             while (true)
             {
                 isEverythingCorrect = Console.ReadKey(true).KeyChar;
@@ -494,7 +557,7 @@ namespace BaseLinker_Products_Multitool
             {
                 Console.WriteLine(i + "/" + quantityOfNewProducts + " ...");
 
-                AddProductSimpleParameters addProductParameters = new AddProductSimpleParameters("bl_1", "", "sku" + i, "Product" + i, 0, 0.0f, 0, "", Convert.ToInt32(category));
+                AddProductSimpleParameters addProductParameters = new AddProductSimpleParameters("bl_1", "", "sku" + i, i.ToString(), "Product" + i, 0, 0.0f, 0, "", Convert.ToInt32(category));
 
                 string parameters = JsonConvert.SerializeObject(addProductParameters);
 
@@ -526,7 +589,7 @@ namespace BaseLinker_Products_Multitool
             {
                 Console.WriteLine(i + "/" + newProducts.Count() + " ...");
 
-                AddProductFullParameters addProductParameters = new AddProductFullParameters("bl_1", "", product.sku, product.name, product.quantity, product.price_brutto, product.price_wholesale_netto, product.tax_rate, product.weight, product.description, product.description_extra1, product.description_extra2, product.description_extra3, product.description_extra4, product.man_name, product.category_id, product.images, product.features);
+                AddProductFullParameters addProductParameters = new AddProductFullParameters("bl_1", "", product.ean, product.sku, product.name, product.quantity, product.price_brutto, product.price_wholesale_netto, product.tax_rate, product.weight, product.description, product.description_extra1, product.description_extra2, product.description_extra3, product.description_extra4, product.man_name, Convert.ToInt32(category), product.images, product.features);
 
                 string parameters = JsonConvert.SerializeObject(addProductParameters);
 
@@ -538,6 +601,9 @@ namespace BaseLinker_Products_Multitool
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
                     Console.WriteLine(i + "/" + newProducts.Count() + " OK!");
                     quantityOfSuccessResponses++;
+
+                    JValue responseProductId = (JValue)response["product_id"];
+                    AddProductVariants(product, tokenAPI, responseProductId.Value.ToString());
                 }
                 else
                 {
@@ -549,6 +615,45 @@ namespace BaseLinker_Products_Multitool
             }
 
             return quantityOfSuccessResponses;
+        }
+
+        public static void AddProductVariants(ProductFull product, string tokenAPI, string newProductId)
+        {
+            int i = 1;
+            foreach (Variant variant in product.variants)
+            {
+                Console.WriteLine(Resources.Language.Variant + " " + i + "/" + product.variants.Count() + " ...");
+
+                AddProductVariantParameters addProductParameters = new AddProductVariantParameters("bl_1", newProductId, variant.sku, variant.ean, variant.name, variant.quantity, variant.price);
+
+                string parameters = JsonConvert.SerializeObject(addProductParameters);
+
+                JObject response = CallBaseLinker(tokenAPI, "addProductVariant", parameters);
+                JValue responseStatus = (JValue)response["status"];
+
+                if (responseStatus.Value.ToString() == "SUCCESS")
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Console.WriteLine(Resources.Language.Variant + " " + i + "/" + product.variants.Count() + " OK!");
+                }
+                else
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Console.WriteLine(Resources.Language.Variant + " " + i + "/" + product.variants.Count() + " " + Resources.Language.Error);
+                }
+
+                i++;
+            }
+        }
+
+        public static string GetStringOrNull(JToken item, string value)
+        {
+            object obj = item[value].ToObject<string>();
+
+            if (obj == null)
+                return null;
+            else
+                return item[value].ToString();
         }
 
         public static (bool, List<ProductFull>) GetProductsListFull(List<ProductSimple> listOfProducts, string tokenAPI, string category)
@@ -581,8 +686,8 @@ namespace BaseLinker_Products_Multitool
                     foreach (JToken item in response["products"].Children().Children())
                     {
                         string id = item["product_id"].ToString();
-                        string sku = item["sku"].ToString();
-                        string ean = item["ean"].ToString();
+                        string sku = GetStringOrNull(item, "sku");
+                        string ean = GetStringOrNull(item, "ean");
                         string name = item["name"].ToString();
                         int quantity = int.Parse(item["quantity"].ToString());
                         float price_netto = float.Parse(item["price_netto"].ToString());
@@ -590,21 +695,67 @@ namespace BaseLinker_Products_Multitool
                         float price_wholesale_netto = float.Parse(item["price_wholesale_netto"].ToString());
                         int tax_rate = int.Parse(item["tax_rate"].ToString());
                         float weight = float.Parse(item["weight"].ToString());
-                        string description = item["description"].ToString();
-                        string description_extra1 = item["description_extra1"].ToString();
-                        string description_extra2 = item["description_extra2"].ToString();
-                        string description_extra3 = item["description_extra3"].ToString();
-                        string description_extra4 = item["description_extra4"].ToString();
-                        string man_name = item["man_name"].ToString();
-                        string man_image = item["man_image"].ToString();
+                        string description = GetStringOrNull(item, "description");
+                        string description_extra1 = GetStringOrNull(item, "description_extra1");
+                        string description_extra2 = GetStringOrNull(item, "description_extra2");
+                        string description_extra3 = GetStringOrNull(item, "description_extra3");
+                        string description_extra4 = GetStringOrNull(item, "description_extra4");
+                        string man_name = GetStringOrNull(item, "man_name");
+                        string man_image = GetStringOrNull(item, "man_image");
                         int category_id = int.Parse(item["category_id"].ToString());
 
-                        Array images = null;
-                        if (item["images"].HasValues) images = item["images"].ToObject<Array>();
-                        Array features = null;
-                        if (item["features"].HasValues) features = item["features"].ToObject<Array>();
-                        Array variants = null;
-                        if (item["variants"].HasValues) variants = item["variants"].ToObject<Array>();
+                        List<String> images = null;
+                        if (item["images"].HasValues) images = item["images"].Values<string>().ToList();
+                        images = images.Select(filename => Path.Combine("url:", filename)).ToList();
+
+                        List<Dictionary<string, string>> features = new List<Dictionary<string, string>>();
+                        if (item["features"].HasValues)
+                        {
+                            foreach (JToken feature in item["features"].ToList())
+                            {
+                                features.Add(new Dictionary<string, string> { ["name"] = feature.First.ToString(), ["value"] = feature.Last.ToString() }); ;
+                            }
+                        }
+
+                        List<Variant> variants = new List<Variant>();
+                        if (item["variants"].HasValues)
+                        {
+                            foreach (JToken singleVariant in item["variants"].ToList())
+                            {
+                                Variant variant = new Variant();
+
+                                foreach (JToken elementOfFeature in singleVariant)
+                                {
+                                    JProperty jProperty = elementOfFeature.ToObject<JProperty>();
+                                    string propertyName = jProperty.Name;
+                                    switch (propertyName)
+                                    {
+                                        case "variant_id":
+                                            variant.variant_id = jProperty.Value.ToString();
+                                            break;
+                                        case "ean":
+                                            variant.ean = jProperty.Value.ToString();
+                                            break;
+                                        case "sku":
+                                            variant.sku = jProperty.Value.ToString();
+                                            break;
+                                        case "name":
+                                            Regex regex = new Regex(name + " ");
+                                            variant.name = regex.Replace(jProperty.Value.ToString().Replace(name,""), "", 1);
+                                            break;
+                                        case "price":
+                                            variant.price = float.Parse(jProperty.Value.ToString());
+                                            break;
+                                        case "quantity":
+                                            variant.quantity = int.Parse(jProperty.Value.ToString());
+                                            break;
+                                    }
+                                }
+
+                                variants.Add(variant);
+                            }
+                        }
+
 
                         ProductFull baseLinkerProduct = new ProductFull(id, sku, ean, name, quantity, price_netto, price_brutto, price_wholesale_netto, tax_rate, weight, description, description_extra1, description_extra2, description_extra3, description_extra4, man_name, man_image, category_id, images, features, variants);
                         listOfProductsFull.Add(baseLinkerProduct);

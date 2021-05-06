@@ -132,6 +132,9 @@
   <data name="DownloadedXProducts" xml:space="preserve">
     <value>Pobrano {a} produktów...</value>
   </data>
+  <data name="DoYouUnderstandAndAgree" xml:space="preserve">
+    <value>Czy rozumiesz powyższe oraz chcesz kontynuować kopiowanie produktów?</value>
+  </data>
   <data name="EmptyListOfProducts" xml:space="preserve">
     <value>Pusta listów produktów!</value>
   </data>
@@ -180,11 +183,17 @@
   <data name="HowToDeleteDuplicates2" xml:space="preserve">
     <value>Spośród zduplikowanych produktów pozostaw jeden z najniższym ID (najstarszy dodany do kategorii produktów)</value>
   </data>
+  <data name="InfoAboutImages" xml:space="preserve">
+    <value>UWAGA! Przez ograniczenia API przesyłane zdjęcia ułożą się po kolei! Przykładowo jeśli produkt posiada zdjęcie główne, zdjęcie dodatkowe 7 oraz zdjęcie dodatkowe 10, to kopia tego produktu będzie miała zdjęcie główne, zdjęcie dodatkowe 1 oraz zdjęcie dodatkowe 2! Jeśli produkt posiada zdjęcie dodatkowe 5 i zdjęcie dodatkowe 12  to kopia tego produktu będzie miała zdjęcie główne i zdjęcie dodatkowe 1!</value>
+  </data>
+  <data name="InfoAboutVariantsPrices" xml:space="preserve">
+    <value>UWAGA! Jeśli produkt posiada wariant bez przypisanej ceny, w wariancie w skopiowanym produkcie będzie cena 1,00!</value>
+  </data>
   <data name="InfoNoDuplicates" xml:space="preserve">
-    <value>There are no duplicates!</value>
+    <value>Nie ma duplikatów!</value>
   </data>
   <data name="IsEverythingCorrect" xml:space="preserve">
-    <value>Czy powyższe ustawienia są poprawne?</value>
+    <value>Czy wszystkie powyższe ustawienia są poprawne?</value>
   </data>
   <data name="MainMenu" xml:space="preserve">
     <value>GŁÓWNE MENU</value>
@@ -224,6 +233,9 @@
   </data>
   <data name="StartedGetProductsListFull" xml:space="preserve">
     <value>Rozpoczęto pobieranie szczegółowych informacji o produktach.</value>
+  </data>
+  <data name="Variant" xml:space="preserve">
+    <value>Wariant</value>
   </data>
   <data name="WrongMenuInput" xml:space="preserve">
     <value>Podałeś niepoprawną wartość, wybierz pozycję z menu wpisując jej numer.</value>
