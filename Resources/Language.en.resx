@@ -156,6 +156,12 @@
   <data name="EnterQuantityOfNewProducts" xml:space="preserve">
     <value>Enter quantity of new products and confirm by pressing ENTER</value>
   </data>
+  <data name="EnterSourceBL" xml:space="preserve">
+    <value>Enter source BaseLinker account details...</value>
+  </data>
+  <data name="EnterSourceCategory" xml:space="preserve">
+    <value>Enter source product category details...</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error!</value>
   </data>
@@ -229,7 +235,10 @@
     <value>No. Return to the main menu!</value>
   </data>
   <data name="NowEnterSecondBL" xml:space="preserve">
-    <value>Now enter the details of the second BaseLinker account...</value>
+    <value>Now enter details of the second BaseLinker account...</value>
+  </data>
+  <data name="NowEnterTargetCategory" xml:space="preserve">
+    <value>Now enter details of the target product category...</value>
   </data>
   <data name="NumberOfProductsToDeleteQuestion" xml:space="preserve">
     <value>Number of products to be removed</value>
@@ -244,19 +253,19 @@
     <value>I am not responsible for any damage caused to my BaseLinker account due to improper use of the program!</value>
   </data>
   <data name="StartedAddingCategories" xml:space="preserve">
-    <value>Category list adding started.</value>
+    <value>Category list adding to second BL account started...</value>
   </data>
   <data name="StartedDeleteProduct" xml:space="preserve">
     <value>Started removing duplicated products ...</value>
   </data>
   <data name="StartedGetCategoriesList" xml:space="preserve">
-    <value>Category list download started.</value>
+    <value>Category list from first BL account download started.</value>
   </data>
-  <data name="StartedGetProductsList" xml:space="preserve">
-    <value>Product list download started.</value>
+  <data name="StartedGetProductsListFromCategory" xml:space="preserve">
+    <value>Started downloading products list from category</value>
   </data>
-  <data name="StartedGetProductsListFull" xml:space="preserve">
-    <value>Products details download started.</value>
+  <data name="StartedGetProductsListFullFromCategory" xml:space="preserve">
+    <value>Started downloading products details from category</value>
   </data>
   <data name="Variant" xml:space="preserve">
     <value>Variant</value>

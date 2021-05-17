@@ -156,6 +156,12 @@
   <data name="EnterQuantityOfNewProducts" xml:space="preserve">
     <value>Wpisz ilość nowych produktów i zatwierdź wciskając ENTER</value>
   </data>
+  <data name="EnterSourceBL" xml:space="preserve">
+    <value>Wprowadź dane źródłowego konta BaseLinker...</value>
+  </data>
+  <data name="EnterSourceCategory" xml:space="preserve">
+    <value>Wprowadź dane źródłowej kategorii produktów...</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Błąd!</value>
   </data>
@@ -231,6 +237,9 @@
   <data name="NowEnterSecondBL" xml:space="preserve">
     <value>Teraz wprowadź dane drugiego konta BaseLinker...</value>
   </data>
+  <data name="NowEnterTargetCategory" xml:space="preserve">
+    <value>Teraz wprowadź dane docelowej kategorii produktów...</value>
+  </data>
   <data name="NumberOfProductsToDeleteQuestion" xml:space="preserve">
     <value>Ilość produktów do usunięcia</value>
   </data>
@@ -244,19 +253,19 @@
     <value>Nie ponoszę odpowiedzialności za szkody wyrządzone na koncie BaseLinker spowodowane nieumiejętnym użyciem programu!</value>
   </data>
   <data name="StartedAddingCategories" xml:space="preserve">
-    <value>Rozpoczęto dodawanie listy kategorii.</value>
+    <value>Rozpoczęto dodawanie listy kategorii do drugiego konta BL...</value>
   </data>
   <data name="StartedDeleteProduct" xml:space="preserve">
     <value>Rozpoczęto usuwanie zduplikowanych produktów...</value>
   </data>
   <data name="StartedGetCategoriesList" xml:space="preserve">
-    <value>Rozpoczęto pobieranie listy kategorii.</value>
+    <value>Rozpoczęto pobieranie listy kategorii z pierwszego konta BL...</value>
   </data>
-  <data name="StartedGetProductsList" xml:space="preserve">
-    <value>Rozpoczęto pobieranie listy produktów.</value>
+  <data name="StartedGetProductsListFromCategory" xml:space="preserve">
+    <value>Rozpoczęto pobieranie listy produktów z kategorii</value>
   </data>
-  <data name="StartedGetProductsListFull" xml:space="preserve">
-    <value>Rozpoczęto pobieranie szczegółowych informacji o produktach.</value>
+  <data name="StartedGetProductsListFullFromCategory" xml:space="preserve">
+    <value>Rozpoczęto pobieranie szczegółowych informacji o produktach z kategorii</value>
   </data>
   <data name="Variant" xml:space="preserve">
     <value>Wariant</value>

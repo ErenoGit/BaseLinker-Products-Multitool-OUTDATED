@@ -355,6 +355,7 @@ namespace BaseLinker_Products_Multitool
             Console.WriteLine(Resources.Language.DoYouUnderstandAndAgree);
             Console.WriteLine("1. " + Resources.Language.Yes);
             Console.WriteLine("2. " + Resources.Language.No);
+            Console.WriteLine();
 
             while (true)
             {
@@ -471,7 +472,6 @@ namespace BaseLinker_Products_Multitool
         public static (bool, Dictionary<int, int>) AddBLCategories(List<Category> listOfCategories, string tokenAPI)
         {
             Dictionary<int, int> categoryPair = new Dictionary<int, int>();
-            Console.WriteLine();
             Console.WriteLine(Resources.Language.StartedAddingCategories);
 
             //listOfCategories = SortListOfCategoriesByOrderToAdd(listOfCategories);
@@ -573,7 +573,7 @@ namespace BaseLinker_Products_Multitool
             int page = 1;
             List<ProductSimple> listOfProducts = new List<ProductSimple>();
 
-            Console.WriteLine(Resources.Language.StartedGetProductsList);
+            Console.WriteLine(Resources.Language.StartedGetProductsListFromCategory + " " + category.ToString() + "...");
 
             while (true)
             {
@@ -734,7 +734,6 @@ namespace BaseLinker_Products_Multitool
 
         public static int GenerateNewProducts(int quantityOfNewProducts, string tokenAPI, string category)
         {
-            Console.WriteLine();
             int quantityOfSuccessResponses = 0;
 
             for (int i = 1; i <= quantityOfNewProducts; i++)
@@ -766,7 +765,6 @@ namespace BaseLinker_Products_Multitool
 
         public static int AddNewProducts(List<ProductFull> newProducts, string tokenAPI, string category)
         {
-            Console.WriteLine();
             int quantityOfSuccessResponses = 0;
             int i = 1;
             foreach (ProductFull product in newProducts)
@@ -852,7 +850,7 @@ namespace BaseLinker_Products_Multitool
 
             List<ProductFull> listOfProductsFull = new List<ProductFull>();
 
-            Console.WriteLine(Resources.Language.StartedGetProductsListFull);
+            Console.WriteLine(Resources.Language.StartedGetProductsListFullFromCategory + " " + category + "...");
 
             foreach (List<string> listOf1000ProductsIds in splittedListOfProductsIds)
             {

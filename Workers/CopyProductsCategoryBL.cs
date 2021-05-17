@@ -14,11 +14,14 @@ namespace BaseLinker_Products_Multitool
         public static void CopyCategoryProductsBetweenBaselinkerAccounts_Worker()
         {
             //Individual worker inputs
+            Console.WriteLine(Resources.Language.EnterSourceCategory);
+            Console.WriteLine();
+
             string tokenAPISource = GetTokenAPI();
             string categorySource = GetCategory();
 
             Console.WriteLine();
-            Console.WriteLine(Resources.Language.NowEnterSecondBL);
+            Console.WriteLine(Resources.Language.NowEnterTargetCategory);
             Console.WriteLine();
 
             string tokenAPITarget = GetTokenAPI();

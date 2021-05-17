@@ -14,6 +14,9 @@ namespace BaseLinker_Products_Multitool
         public static void CopyEntireWarehouseBetweenBaselinkerAccounts_Worker()
         {
             //Individual worker inputs
+            Console.WriteLine(Resources.Language.EnterSourceBL);
+            Console.WriteLine();
+
             string tokenAPISource = GetTokenAPI();
 
             Console.WriteLine();
@@ -32,9 +35,6 @@ namespace BaseLinker_Products_Multitool
 
             if (!IsEverythingCorrect)
                 return;
-            
-
-            Console.WriteLine();
 
             bool IsEverythingCorrectInfoAboutImages = CheckIsEverythingCorrectInfoAboutImagesAndVariants();
 

@@ -178,6 +178,24 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wprowadź dane źródłowego konta BaseLinker....
+        /// </summary>
+        internal static string EnterSourceBL {
+            get {
+                return ResourceManager.GetString("EnterSourceBL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wprowadź dane źródłowej kategorii produktów....
+        /// </summary>
+        internal static string EnterSourceCategory {
+            get {
+                return ResourceManager.GetString("EnterSourceCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Błąd!.
         /// </summary>
         internal static string Error {
@@ -403,6 +421,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Teraz wprowadź dane docelowej kategorii produktów....
+        /// </summary>
+        internal static string NowEnterTargetCategory {
+            get {
+                return ResourceManager.GetString("NowEnterTargetCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ilość produktów do usunięcia.
         /// </summary>
         internal static string NumberOfProductsToDeleteQuestion {
@@ -439,7 +466,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rozpoczęto dodawanie listy kategorii..
+        ///   Looks up a localized string similar to Rozpoczęto dodawanie listy kategorii do drugiego konta BL....
         /// </summary>
         internal static string StartedAddingCategories {
             get {
@@ -457,7 +484,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rozpoczęto pobieranie listy kategorii..
+        ///   Looks up a localized string similar to Rozpoczęto pobieranie listy kategorii z pierwszego konta BL....
         /// </summary>
         internal static string StartedGetCategoriesList {
             get {
@@ -466,20 +493,20 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rozpoczęto pobieranie listy produktów..
+        ///   Looks up a localized string similar to Rozpoczęto pobieranie listy produktów z kategorii.
         /// </summary>
-        internal static string StartedGetProductsList {
+        internal static string StartedGetProductsListFromCategory {
             get {
-                return ResourceManager.GetString("StartedGetProductsList", resourceCulture);
+                return ResourceManager.GetString("StartedGetProductsListFromCategory", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rozpoczęto pobieranie szczegółowych informacji o produktach..
+        ///   Looks up a localized string similar to Rozpoczęto pobieranie szczegółowych informacji o produktach z kategorii.
         /// </summary>
-        internal static string StartedGetProductsListFull {
+        internal static string StartedGetProductsListFullFromCategory {
             get {
-                return ResourceManager.GetString("StartedGetProductsListFull", resourceCulture);
+                return ResourceManager.GetString("StartedGetProductsListFullFromCategory", resourceCulture);
             }
         }
         
