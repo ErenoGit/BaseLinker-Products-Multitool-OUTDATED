@@ -479,7 +479,7 @@ namespace BaseLinker_Products_Multitool
             int i = 1;
             foreach (Category category in listOfCategories)
             {
-                Console.WriteLine(i + "/" + listOfCategories.Count() + " ...");
+                Console.WriteLine(i + "/" + listOfCategories.Count() + " ..." + " (" + category.name + ")");
 
                 if(category.parent_id != 0)
                 {
@@ -499,7 +499,7 @@ namespace BaseLinker_Products_Multitool
                 if (responseStatus.Value.ToString() == "SUCCESS")
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(i + "/" + listOfCategories.Count() + " OK!");
+                    Console.WriteLine(i + "/" + listOfCategories.Count() + " OK!" + " (" + category.name + ")");
 
                     JValue responseCategoryId = (JValue)response["category_id"];
 
@@ -508,7 +508,7 @@ namespace BaseLinker_Products_Multitool
                 else
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(i + "/" + listOfCategories.Count() + " " + Resources.Language.Error);
+                    Console.WriteLine(i + "/" + listOfCategories.Count() + " " + Resources.Language.Error + "(" + category.name + ")");
                     Console.WriteLine(Resources.Language.EmptyListOfCategories + " " + Resources.Language.PressAnythingToBackToMenu);
                     Console.ReadKey();
                     return (false, null);
@@ -706,7 +706,7 @@ namespace BaseLinker_Products_Multitool
 
             foreach (ProductSimple productToDelete in listProductsToDelete)
             {
-                Console.WriteLine(productNumber + "/" + countAllProductsToDelete + " ...");
+                Console.WriteLine(productNumber + "/" + countAllProductsToDelete + " ..." + " (" + productToDelete.name + ")");
 
                 DeleteProductParameters deleteProductParameters = new DeleteProductParameters("bl_1", productToDelete.id);
 
@@ -718,13 +718,13 @@ namespace BaseLinker_Products_Multitool
                 if (responseStatus.Value.ToString() == "SUCCESS")
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(productNumber + "/" + countAllProductsToDelete + " OK!");
+                    Console.WriteLine(productNumber + "/" + countAllProductsToDelete + " OK!" + " (" + productToDelete.name + ")");
                     quantityOfSuccessResponses++;
                 }
                 else
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(productNumber + "/" + countAllProductsToDelete + " " + Resources.Language.Error);
+                    Console.WriteLine(productNumber + "/" + countAllProductsToDelete + " " + Resources.Language.Error + " (" + productToDelete.name + ")");
                 }
 
                 productNumber++;
@@ -738,7 +738,7 @@ namespace BaseLinker_Products_Multitool
 
             for (int i = 1; i <= quantityOfNewProducts; i++)
             {
-                Console.WriteLine(i + "/" + quantityOfNewProducts + " ...");
+                Console.WriteLine(i + "/" + quantityOfNewProducts + " ..." + " (Product" + i + ")");
 
                 AddProductSimpleParameters addProductParameters = new AddProductSimpleParameters("bl_1", "", "sku" + i, i.ToString(), "Product" + i, 0, 0.0f, 0, null, Convert.ToInt32(category));
 
@@ -750,13 +750,13 @@ namespace BaseLinker_Products_Multitool
                 if (responseStatus.Value.ToString() == "SUCCESS")
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(i + "/" + quantityOfNewProducts + " OK!");
+                    Console.WriteLine(i + "/" + quantityOfNewProducts + " OK!" + " (Product" + i + ")");
                     quantityOfSuccessResponses++;
                 }
                 else
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(i + "/" + quantityOfNewProducts + " " + Resources.Language.Error);
+                    Console.WriteLine(i + "/" + quantityOfNewProducts + " " + Resources.Language.Error + " (Product" + i + ")");
                 }
             }
 
@@ -769,7 +769,7 @@ namespace BaseLinker_Products_Multitool
             int i = 1;
             foreach (ProductFull product in newProducts)
             {
-                Console.WriteLine(i + "/" + newProducts.Count() + " ...");
+                Console.WriteLine(i + "/" + newProducts.Count() + " ..." + " (" + product.name + ")");
 
                 AddProductFullParameters addProductParameters = new AddProductFullParameters("bl_1", "", product.ean, product.sku, product.name, product.quantity, product.price_brutto, product.price_wholesale_netto, product.tax_rate, product.weight, product.description, product.description_extra1, product.description_extra2, product.description_extra3, product.description_extra4, product.man_name, Convert.ToInt32(category), product.images, product.features);
 
@@ -781,7 +781,7 @@ namespace BaseLinker_Products_Multitool
                 if (responseStatus.Value.ToString() == "SUCCESS")
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(i + "/" + newProducts.Count() + " OK!");
+                    Console.WriteLine(i + "/" + newProducts.Count() + " OK!" + " (" + product.name + ")");
                     quantityOfSuccessResponses++;
 
                     JValue responseProductId = (JValue)response["product_id"];
@@ -790,7 +790,7 @@ namespace BaseLinker_Products_Multitool
                 else
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(i + "/" + newProducts.Count() + " " + Resources.Language.Error);
+                    Console.WriteLine(i + "/" + newProducts.Count() + " " + Resources.Language.Error + " (" + product.name + ")");
                 }
 
                 i++;
@@ -804,7 +804,7 @@ namespace BaseLinker_Products_Multitool
             int i = 1;
             foreach (Variant variant in product.variants)
             {
-                Console.WriteLine(Resources.Language.Variant + " " + i + "/" + product.variants.Count() + " ...");
+                Console.WriteLine(Resources.Language.Variant + " " + i + "/" + product.variants.Count() + " ..." + " (" + variant.name + ")");
 
                 AddProductVariantParameters addProductParameters = new AddProductVariantParameters("bl_1", newProductId, variant.sku, variant.ean, variant.name, variant.quantity, variant.price);
 
@@ -816,12 +816,12 @@ namespace BaseLinker_Products_Multitool
                 if (responseStatus.Value.ToString() == "SUCCESS")
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(Resources.Language.Variant + " " + i + "/" + product.variants.Count() + " OK!");
+                    Console.WriteLine(Resources.Language.Variant + " " + i + "/" + product.variants.Count() + " OK!" + " (" + variant.name + ")");
                 }
                 else
                 {
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    Console.WriteLine(Resources.Language.Variant + " " + i + "/" + product.variants.Count() + " " + Resources.Language.Error);
+                    Console.WriteLine(Resources.Language.Variant + " " + i + "/" + product.variants.Count() + " " + Resources.Language.Error + " (" + variant.name + ")");
                 }
 
                 i++;
