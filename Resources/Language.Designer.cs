@@ -421,6 +421,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ilość nowych produktów do wygenerowania.
+        /// </summary>
+        internal static string QuantityOfNewProducts {
+            get {
+                return ResourceManager.GetString("QuantityOfNewProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nie ponoszę odpowiedzialności za szkody wyrządzone na koncie BaseLinker spowodowane nieumiejętnym użyciem programu!.
         /// </summary>
         internal static string ResponsibilityInfo {

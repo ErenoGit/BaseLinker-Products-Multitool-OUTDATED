@@ -237,6 +237,9 @@
   <data name="PressAnythingToBackToMenu" xml:space="preserve">
     <value>Wciśnij dowolny klawisz aby wrócić do menu głównego...</value>
   </data>
+  <data name="QuantityOfNewProducts" xml:space="preserve">
+    <value>Ilość nowych produktów do wygenerowania</value>
+  </data>
   <data name="ResponsibilityInfo" xml:space="preserve">
     <value>Nie ponoszę odpowiedzialności za szkody wyrządzone na koncie BaseLinker spowodowane nieumiejętnym użyciem programu!</value>
   </data>

@@ -328,6 +328,7 @@ namespace BaseLinker_Products_Multitool
             Console.WriteLine(Resources.Language.IsEverythingCorrect);
             Console.WriteLine("1. " + Resources.Language.Yes);
             Console.WriteLine("2. " + Resources.Language.No);
+            Console.WriteLine();
             
             while (true)
             {
@@ -740,7 +741,7 @@ namespace BaseLinker_Products_Multitool
             {
                 Console.WriteLine(i + "/" + quantityOfNewProducts + " ...");
 
-                AddProductSimpleParameters addProductParameters = new AddProductSimpleParameters("bl_1", "", "sku" + i, i.ToString(), "Product" + i, 0, 0.0f, 0, "", Convert.ToInt32(category));
+                AddProductSimpleParameters addProductParameters = new AddProductSimpleParameters("bl_1", "", "sku" + i, i.ToString(), "Product" + i, 0, 0.0f, 0, null, Convert.ToInt32(category));
 
                 string parameters = JsonConvert.SerializeObject(addProductParameters);
 

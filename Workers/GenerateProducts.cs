@@ -28,7 +28,7 @@ namespace BaseLinker_Products_Multitool.Workers
             Console.WriteLine(Resources.Language.YourOptions + ":");
             Console.WriteLine(Resources.Language.YourOptionsAPI + ": " + tokenAPI);
             Console.WriteLine(Resources.Language.YourOptionsCategory + ": " + category);
-            Console.WriteLine(Resources.Language.YourOptionsCategory + ": " + quantityOfNewProducts);
+            Console.WriteLine(Resources.Language.QuantityOfNewProducts + ": " + quantityOfNewProducts);
 
             bool IsEverythingCorrect = CheckIsEverythingCorrect();
 
