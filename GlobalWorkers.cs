@@ -28,6 +28,20 @@ namespace BaseLinker_Products_Multitool
         }
     }
 
+    class Category
+    {
+        public int category_id { get; set; }
+        public string name { get; set; }
+        public int parent_id { get; set; }
+
+        public Category(int _category_id, string _name, int _parent_id)
+        {
+            category_id = _category_id;
+            name = _name;
+            parent_id = _parent_id;
+        }
+    }
+
     class Variant
     {
         public string variant_id { get; set; }
@@ -92,15 +106,37 @@ namespace BaseLinker_Products_Multitool
     class GetProductsListParameters
     {
         public string storage_id { get; set; }
-        public string filter_category_id { get; set; }
+        public int filter_category_id { get; set; }
         public int page { get; set; }
-        public GetProductsListParameters(string _storage_id, string _filter_category_id, int _page)
+        public GetProductsListParameters(string _storage_id, int _filter_category_id, int _page)
         {
             storage_id = _storage_id;
             filter_category_id = _filter_category_id;
             page = _page;
         }
     }
+    class GetCategoriesParameters
+    {
+        public string storage_id { get; set; }
+        public GetCategoriesParameters(string _storage_id)
+        {
+            storage_id = _storage_id;
+        }
+    }
+
+    class AddCategoryParameters
+    {
+        public string storage_id { get; set; }
+        public string name { get; set; }
+        public int parent_id { get; set; }
+        public AddCategoryParameters(string _storage_id, string _name, int _parent_id)
+        {
+            storage_id = _storage_id;
+            name = _name;
+            parent_id = _parent_id;
+        }
+    }
+
 
     class GetProductsDataParameters
     {
@@ -191,7 +227,10 @@ namespace BaseLinker_Products_Multitool
             description_extra3 = _description_extra3;
             description_extra4 = _description_extra4;
             man_name = _man_name;
+
+            if (!(_category_id == -1))
             category_id = _category_id;
+
             images = _images;
             features = _features;
         }
@@ -303,7 +342,7 @@ namespace BaseLinker_Products_Multitool
             }
         }
 
-        public static bool CheckIsEverythingCorrectInfoAboutImages()
+        public static bool CheckIsEverythingCorrectInfoAboutImagesAndVariants()
         {
             char isEverythingCorrect;
 
@@ -352,7 +391,53 @@ namespace BaseLinker_Products_Multitool
             }
         }
 
-        
+        public static int StringToIntOrDefault(string s, int @default)
+        {
+            int number;
+            if (int.TryParse(s, out number))
+                return number;
+            return @default;
+        }
+
+        public static List<Category> SortListOfCategoriesByOrderToAdd(List<Category> listOfCategories)
+        {
+            int count = listOfCategories.Count();
+            List<Category> newListOfCategories = new List<Category>();
+            while (true)
+            {
+                foreach (Category category in listOfCategories)
+                {
+                    if (category.parent_id == 0)
+                    {
+                        listOfCategories.Remove(category);
+                        newListOfCategories.Add(category);
+                        count--;
+                        break;
+                    }
+
+                    foreach (Category newCategory in newListOfCategories)
+                    {
+                        if (category.parent_id == newCategory.category_id)
+                        {
+                            listOfCategories.Remove(category);
+                            newListOfCategories.Add(category);
+                            count--;
+                            break;
+                        }
+                    }
+                    break;
+                }
+
+                if(count == 0)
+                    break;
+            }
+
+
+
+            return newListOfCategories;
+        }
+
+
 
         public static JObject CallBaseLinker(string tokenAPI, string method, string parameters)
         {
@@ -382,9 +467,107 @@ namespace BaseLinker_Products_Multitool
 
         }
 
+        public static (bool, Dictionary<int, int>) AddBLCategories(List<Category> listOfCategories, string tokenAPI)
+        {
+            Dictionary<int, int> categoryPair = new Dictionary<int, int>();
+            Console.WriteLine();
+            Console.WriteLine(Resources.Language.StartedAddingCategories);
+
+            //listOfCategories = SortListOfCategoriesByOrderToAdd(listOfCategories);
+
+            int i = 1;
+            foreach (Category category in listOfCategories)
+            {
+                Console.WriteLine(i + "/" + listOfCategories.Count() + " ...");
+
+                if(category.parent_id != 0)
+                {
+                    int newParentCategory = -1;
+                    categoryPair.TryGetValue(category.parent_id, out newParentCategory);
+                    category.parent_id = newParentCategory;
+                }
 
 
-        public static (bool, List<ProductSimple>) GetProductsListSimple(string tokenAPI, string category)
+                AddCategoryParameters addCategoryParameters = new AddCategoryParameters("bl_1", category.name, category.parent_id);
+
+                string parameters = JsonConvert.SerializeObject(addCategoryParameters);
+
+                JObject response = CallBaseLinker(tokenAPI, "addCategory", parameters);
+                JValue responseStatus = (JValue)response["status"];
+
+                if (responseStatus.Value.ToString() == "SUCCESS")
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Console.WriteLine(i + "/" + listOfCategories.Count() + " OK!");
+
+                    JValue responseCategoryId = (JValue)response["category_id"];
+
+                    categoryPair.Add(category.category_id, int.Parse(responseCategoryId.ToString()));
+                }
+                else
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    Console.WriteLine(i + "/" + listOfCategories.Count() + " " + Resources.Language.Error);
+                    Console.WriteLine(Resources.Language.EmptyListOfCategories + " " + Resources.Language.PressAnythingToBackToMenu);
+                    Console.ReadKey();
+                    return (false, null);
+                }
+
+                i++;
+            }
+
+            //writline pomyślnie dodano X kategorii produktów
+            return (true, categoryPair);
+        }
+
+        public static (bool, List<Category>) GetBLCategories(string tokenAPI)
+        {
+            List<Category> listOfCategories = new List<Category>();
+
+            Console.WriteLine(Resources.Language.StartedGetCategoriesList);
+
+            GetCategoriesParameters getCategoriesParameters = new GetCategoriesParameters("bl_1");
+
+            string parameters = JsonConvert.SerializeObject(getCategoriesParameters);
+
+            JObject response = CallBaseLinker(tokenAPI, "getCategories", parameters);
+            JValue responseStatus = (JValue)response["status"];
+
+            if (responseStatus.Value.ToString() == "SUCCESS")
+            {
+                JArray categories = (JArray)response["categories"];
+
+                foreach (var item in categories)
+                {
+                    int category_id = int.Parse(item["category_id"].ToString());
+                    string name = item["name"].ToString();
+                    int parent_id = int.Parse(item["parent_id"].ToString());
+
+                    Category baseLinkerVariant = new Category(category_id, name, parent_id);
+                    listOfCategories.Add(baseLinkerVariant);
+                }
+
+                Console.WriteLine(Resources.Language.DownloadedXCategories.Replace("{a}", listOfCategories.Count().ToString()));
+            }
+            else
+            {
+                Console.WriteLine(Resources.Language.ErrorWhenDownloadCategories + " " + Resources.Language.PressAnythingToBackToMenu);
+                Console.ReadKey();
+                return (false, null);
+            }
+
+
+            if (listOfCategories.Count() == 0)
+            {
+                Console.WriteLine(Resources.Language.EmptyListOfCategories + " " + Resources.Language.PressAnythingToBackToMenu);
+                Console.ReadKey();
+                return (false, null);
+            }
+
+            return (true, listOfCategories);
+        }
+
+        public static (bool, List<ProductSimple>) GetProductsListSimple(string tokenAPI, int category)
         {
             int page = 1;
             List<ProductSimple> listOfProducts = new List<ProductSimple>();
@@ -706,7 +889,7 @@ namespace BaseLinker_Products_Multitool
 
                         List<String> images = null;
                         if (item["images"].HasValues) images = item["images"].Values<string>().ToList();
-                        images = images.Select(filename => Path.Combine("url:", filename)).ToList();
+                        images = images?.Select(filename => Path.Combine("url:", filename)).ToList();
 
                         List<Dictionary<string, string>> features = new List<Dictionary<string, string>>();
                         if (item["features"].HasValues)

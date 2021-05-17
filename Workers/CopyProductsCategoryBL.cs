@@ -32,21 +32,21 @@ namespace BaseLinker_Products_Multitool
             Console.WriteLine(Resources.Language.YourOptionsAPITarget + ": " + tokenAPITarget);
             Console.WriteLine(Resources.Language.YourOptionsCategoryTarget + ": " + categoryTarget);
 
-            bool IsEverythingCorrectInfoAboutImages = CheckIsEverythingCorrectInfoAboutImages();
-
-            if (!IsEverythingCorrectInfoAboutImages)
-                return;
-
-            Console.WriteLine();
-
             bool IsEverythingCorrect = CheckIsEverythingCorrect();
 
             if (!IsEverythingCorrect)
+                return;     
+
+            Console.WriteLine();
+
+            bool IsEverythingCorrectInfoAboutImages = CheckIsEverythingCorrectInfoAboutImagesAndVariants();
+
+            if (!IsEverythingCorrectInfoAboutImages)
                 return;
             //
 
             //Get products list from selected BL category, returns:     Item1 - is everything ok     Item2 - list of products
-            var returnFromGetProductsListSimple = GetProductsListSimple(tokenAPISource, categorySource);
+            var returnFromGetProductsListSimple = GetProductsListSimple(tokenAPISource, StringToIntOrDefault(categorySource, -1));
             if (returnFromGetProductsListSimple.Item1 == false)
                 return;
             List<ProductSimple> listOfProducts = returnFromGetProductsListSimple.Item2;

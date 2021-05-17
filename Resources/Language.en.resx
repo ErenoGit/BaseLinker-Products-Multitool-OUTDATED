@@ -129,11 +129,20 @@
   <data name="DownloadedInfoAboutXProducts" xml:space="preserve">
     <value>Downloaded products details from {a} products...</value>
   </data>
+  <data name="DownloadedXCategories" xml:space="preserve">
+    <value>Downloaded {a} categories...</value>
+  </data>
   <data name="DownloadedXProducts" xml:space="preserve">
     <value>Downloaded {a} products...</value>
   </data>
   <data name="DoYouUnderstandAndAgree" xml:space="preserve">
     <value>Do you understand the above and do you want to continue copying products?</value>
+  </data>
+  <data name="EmptyCategoriesList" xml:space="preserve">
+    <value>Category list is empty! Only products without category will be copied.</value>
+  </data>
+  <data name="EmptyListOfCategories" xml:space="preserve">
+    <value>Empty categories list!</value>
   </data>
   <data name="EmptyListOfProducts" xml:space="preserve">
     <value>Empty products list!</value>
@@ -142,13 +151,16 @@
     <value>Enter the BaseLinker account API token (My Account&gt; API&gt; Your API Token) and confirm by pressing ENTER</value>
   </data>
   <data name="EnterCategory" xml:space="preserve">
-    <value>Enter the product category ID (BaseLinker Magazine &gt; Categories &gt; [Your category] &gt; [URL address ending]) and confirm by pressing ENTER</value>
+    <value>Enter the product category ID (BaseLinker Magazine &gt; Categories &gt; [Your category] &gt; [URL address ending]) and confirm by pressing ENTER (products without categories = leave this field blank)</value>
   </data>
   <data name="EnterQuantityOfNewProducts" xml:space="preserve">
     <value>Enter quantity of new products and confirm by pressing ENTER</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error!</value>
+  </data>
+  <data name="ErrorWhenDownloadCategories" xml:space="preserve">
+    <value>There was an error getting the category list!</value>
   </data>
   <data name="ErrorWhenDownloadFullProducts" xml:space="preserve">
     <value>There was an error downloading the products details!</value>
@@ -208,7 +220,7 @@
     <value>Copying all products from one category to another (transfer between BaseLinker accounts possible)</value>
   </data>
   <data name="Menu4" xml:space="preserve">
-    <value>Copy entire product inventory (with categories, products etc.) from one BaseLinker account to another</value>
+    <value>Copy entire product inventory (with categories, products etc.) from one BaseLinker account to another (everything except products without categories, they cannot be added via API)</value>
   </data>
   <data name="Menu5" xml:space="preserve">
     <value>Mass generation of new products in a selected product category in BaseLinker (for tests)</value>
@@ -228,8 +240,14 @@
   <data name="ResponsibilityInfo" xml:space="preserve">
     <value>I am not responsible for any damage caused to my BaseLinker account due to improper use of the program!</value>
   </data>
+  <data name="StartedAddingCategories" xml:space="preserve">
+    <value>Category list adding started.</value>
+  </data>
   <data name="StartedDeleteProduct" xml:space="preserve">
     <value>Started removing duplicated products ...</value>
+  </data>
+  <data name="StartedGetCategoriesList" xml:space="preserve">
+    <value>Category list download started.</value>
   </data>
   <data name="StartedGetProductsList" xml:space="preserve">
     <value>Product list download started.</value>

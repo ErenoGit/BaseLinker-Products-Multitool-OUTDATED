@@ -97,6 +97,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pobrano {a} kategorii....
+        /// </summary>
+        internal static string DownloadedXCategories {
+            get {
+                return ResourceManager.GetString("DownloadedXCategories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pobrano {a} produktów....
         /// </summary>
         internal static string DownloadedXProducts {
@@ -111,6 +120,24 @@ namespace BaseLinker_Products_Multitool.Resources {
         internal static string DoYouUnderstandAndAgree {
             get {
                 return ResourceManager.GetString("DoYouUnderstandAndAgree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lista kategorii jest pusta! Zostaną skopiowane tylko produkty bez kategorii..
+        /// </summary>
+        internal static string EmptyCategoriesList {
+            get {
+                return ResourceManager.GetString("EmptyCategoriesList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pusta listów kategorii!.
+        /// </summary>
+        internal static string EmptyListOfCategories {
+            get {
+                return ResourceManager.GetString("EmptyListOfCategories", resourceCulture);
             }
         }
         
@@ -133,7 +160,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wpisz ID kategorii produktów (Magazyn BaseLinker &gt; Kategorie &gt; [Twoja kategoria] &gt; [W adresie strony pojawi się na końcu id kategorii]) i zatwierdź wciskając ENTER.
+        ///   Looks up a localized string similar to Wpisz ID kategorii produktów (Magazyn BaseLinker &gt; Kategorie &gt; [Twoja kategoria] &gt; [W adresie strony pojawi się na końcu id kategorii]) i zatwierdź wciskając ENTER (produkty bez kategorii = pozostaw to pole puste).
         /// </summary>
         internal static string EnterCategory {
             get {
@@ -156,6 +183,15 @@ namespace BaseLinker_Products_Multitool.Resources {
         internal static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wystąpił błąd podczas pobierania listy kategorii!.
+        /// </summary>
+        internal static string ErrorWhenDownloadCategories {
+            get {
+                return ResourceManager.GetString("ErrorWhenDownloadCategories", resourceCulture);
             }
         }
         
@@ -331,7 +367,7 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kopiowanie całego magazynu produktów (with all categories, with all products, etc.) z jednego konta BaseLinker do drugiego.
+        ///   Looks up a localized string similar to Kopiowanie całego magazynu produktów (z wszystkimi kategoriami, produktami itd.) z jednego konta BaseLinker do drugiego (wszystko oprócz produktów bez kategorii, ich nie da się dodać przez API).
         /// </summary>
         internal static string Menu4 {
             get {
@@ -394,11 +430,29 @@ namespace BaseLinker_Products_Multitool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rozpoczęto dodawanie listy kategorii..
+        /// </summary>
+        internal static string StartedAddingCategories {
+            get {
+                return ResourceManager.GetString("StartedAddingCategories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rozpoczęto usuwanie zduplikowanych produktów....
         /// </summary>
         internal static string StartedDeleteProduct {
             get {
                 return ResourceManager.GetString("StartedDeleteProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rozpoczęto pobieranie listy kategorii..
+        /// </summary>
+        internal static string StartedGetCategoriesList {
+            get {
+                return ResourceManager.GetString("StartedGetCategoriesList", resourceCulture);
             }
         }
         

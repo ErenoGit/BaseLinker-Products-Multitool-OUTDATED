@@ -32,7 +32,7 @@ namespace BaseLinker_Products_Multitool
             //
 
             //Get products list from selected BL category, returns:     Item1 - is everything ok     Item2 - list of products
-            var returnFromGetProductsListSimple = GetProductsListSimple(tokenAPI, category);
+            var returnFromGetProductsListSimple = GetProductsListSimple(tokenAPI, StringToIntOrDefault(category, -1));
             if (returnFromGetProductsListSimple.Item1 == false)
                 return;
             List<ProductSimple> listOfProducts = returnFromGetProductsListSimple.Item2;

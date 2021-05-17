@@ -129,11 +129,20 @@
   <data name="DownloadedInfoAboutXProducts" xml:space="preserve">
     <value>Pobrano szczegółowe informacje o {a} produktach...</value>
   </data>
+  <data name="DownloadedXCategories" xml:space="preserve">
+    <value>Pobrano {a} kategorii...</value>
+  </data>
   <data name="DownloadedXProducts" xml:space="preserve">
     <value>Pobrano {a} produktów...</value>
   </data>
   <data name="DoYouUnderstandAndAgree" xml:space="preserve">
     <value>Czy rozumiesz powyższe oraz chcesz kontynuować kopiowanie produktów?</value>
+  </data>
+  <data name="EmptyCategoriesList" xml:space="preserve">
+    <value>Lista kategorii jest pusta! Zostaną skopiowane tylko produkty bez kategorii.</value>
+  </data>
+  <data name="EmptyListOfCategories" xml:space="preserve">
+    <value>Pusta listów kategorii!</value>
   </data>
   <data name="EmptyListOfProducts" xml:space="preserve">
     <value>Pusta listów produktów!</value>
@@ -142,13 +151,16 @@
     <value>Wpisz token API konta BaseLinker (Moje konto &gt; API &gt; Twój token API) i zatwierdź wciskając ENTER</value>
   </data>
   <data name="EnterCategory" xml:space="preserve">
-    <value>Wpisz ID kategorii produktów (Magazyn BaseLinker &gt; Kategorie &gt; [Twoja kategoria] &gt; [W adresie strony pojawi się na końcu id kategorii]) i zatwierdź wciskając ENTER</value>
+    <value>Wpisz ID kategorii produktów (Magazyn BaseLinker &gt; Kategorie &gt; [Twoja kategoria] &gt; [W adresie strony pojawi się na końcu id kategorii]) i zatwierdź wciskając ENTER (produkty bez kategorii = pozostaw to pole puste)</value>
   </data>
   <data name="EnterQuantityOfNewProducts" xml:space="preserve">
     <value>Wpisz ilość nowych produktów i zatwierdź wciskając ENTER</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Błąd!</value>
+  </data>
+  <data name="ErrorWhenDownloadCategories" xml:space="preserve">
+    <value>Wystąpił błąd podczas pobierania listy kategorii!</value>
   </data>
   <data name="ErrorWhenDownloadFullProducts" xml:space="preserve">
     <value>Wystąpił błąd podczas pobierania szczegółowych informacji o produktach!</value>
@@ -208,7 +220,7 @@
     <value>Kopiowanie wszystkich produktów z jednej kategorii do drugiej (możliwy przesył między kontami BaseLinker)</value>
   </data>
   <data name="Menu4" xml:space="preserve">
-    <value>Kopiowanie całego magazynu produktów (with all categories, with all products, etc.) z jednego konta BaseLinker do drugiego</value>
+    <value>Kopiowanie całego magazynu produktów (z wszystkimi kategoriami, produktami itd.) z jednego konta BaseLinker do drugiego (wszystko oprócz produktów bez kategorii, ich nie da się dodać przez API)</value>
   </data>
   <data name="Menu5" xml:space="preserve">
     <value>Masowe generowanie nowych produktów w wybranej kategorii produktów w BaseLinker (dla testów)</value>
@@ -228,8 +240,14 @@
   <data name="ResponsibilityInfo" xml:space="preserve">
     <value>Nie ponoszę odpowiedzialności za szkody wyrządzone na koncie BaseLinker spowodowane nieumiejętnym użyciem programu!</value>
   </data>
+  <data name="StartedAddingCategories" xml:space="preserve">
+    <value>Rozpoczęto dodawanie listy kategorii.</value>
+  </data>
   <data name="StartedDeleteProduct" xml:space="preserve">
     <value>Rozpoczęto usuwanie zduplikowanych produktów...</value>
+  </data>
+  <data name="StartedGetCategoriesList" xml:space="preserve">
+    <value>Rozpoczęto pobieranie listy kategorii.</value>
   </data>
   <data name="StartedGetProductsList" xml:space="preserve">
     <value>Rozpoczęto pobieranie listy produktów.</value>
