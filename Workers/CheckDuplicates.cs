@@ -1,12 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static BaseLinker_Products_Multitool.GlobalWorkers;
-using System.Web.Script.Serialization;
-using Newtonsoft.Json.Linq;
 
 namespace BaseLinker_Products_Multitool
 {
