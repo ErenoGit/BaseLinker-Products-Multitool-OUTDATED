@@ -13,7 +13,7 @@
 5. Mass generating of test products
 
 # Multilanguage
-[PL] Teraz wspieramy wielojęzyczność - możesz wybrać z jakiego języka chcesz skorzystać!
+[PL] Teraz wspieramy wielojęzyczność - możesz wybrać z jakiego języka chcesz skorzystać!  
 [EN] Now we support multilanguage - you can choose which language you want to use!
 
 # Technologies
