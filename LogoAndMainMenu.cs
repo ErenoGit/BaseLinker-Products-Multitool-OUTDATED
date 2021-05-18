@@ -140,7 +140,10 @@ namespace BaseLinker_Products_Multitool
             }
             catch(Exception ex)
             {
-                Console.WriteLine("ERROR: "+ex.Message);
+                Console.WriteLine($"ERROR (Type: {ex.GetType()} Code: {ex.HResult}): {ex.Message}");
+            }
+            finally
+            {
                 Console.WriteLine("Click any button to close application...");
                 Console.ReadKey();
             }
