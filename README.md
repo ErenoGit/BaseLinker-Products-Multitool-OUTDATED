@@ -1,3 +1,4 @@
+![bagde](https://img.shields.io/github/languages/top/ErenoGit/BaseLinker-Products-Multitool) ![bagde2](https://img.shields.io/badge/.NET%20Framework-4.7.2-blue) ![bagde3](https://img.shields.io/badge/REST%20API-green) ![bagde4](https://img.shields.io/badge/Newtonsoft.Json-13.0-green) ![bagde5](https://img.shields.io/github/license/ErenoGit/BaseLinker-Products-Multitool)
 # BaseLinker Products Multitool
 #### [PL] Konsolowe multinarzędzie dla BaseLinker:
 1. Sprawdzanie duplikatów produktów wewnątrz kategorii produktów
@@ -17,9 +18,9 @@
 [EN] Now we support multilanguage - you can choose which language you want to use!
 
 # Technologies
-- .NET Framework 4.7.2
+- .NET Framework 4.7.2 (Visual Studio 2019)
 - REST API
-- Newtonsoft.Json.dll
+- Newtonsoft.Json.dll (13.0)
 
 # Screens
 ![screen1](https://i.imgur.com/EBIejN6.png "Logo")
