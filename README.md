@@ -1,7 +1,9 @@
 ![bagde](https://img.shields.io/github/languages/top/ErenoGit/BaseLinker-Products-Multitool) ![bagde2](https://img.shields.io/badge/.NET%20Framework-4.7.2-blue) ![bagde3](https://img.shields.io/badge/REST%20API-green) ![bagde4](https://img.shields.io/badge/Newtonsoft.Json-13.0-green) ![bagde5](https://img.shields.io/github/license/ErenoGit/BaseLinker-Products-Multitool)
 # BaseLinker Products Multitool 
 `(OBSOLETE! Created for a warehouse system older than July 2021!)`
+```html
 <p style="color:red">This is a paragraph.</p>
+```
 
 #### [PL] Konsolowe multinarzędzie dla BaseLinker:
 1. Sprawdzanie duplikatów produktów wewnątrz kategorii produktów
